@@ -82,11 +82,9 @@ extension AWSCognitoAuthPlugin: AuthCategoryBehavior {
         } as! AuthSignInResult
     }
 
-    public func continueFromDeepLink(queryItems: [URLQueryItem]) async throws -> Void {
-        DispatchQueue.main.sync {
-            HostedUISessionHolder.continuation?.resume(returning: queryItems)
-            HostedUISessionHolder.aswebAuthenticationSession?.cancel()
-        }
+    public func continueFromDeepLink(queryItems: [URLQueryItem]) {
+        HostedUISessionHolder.continuation?.resume(returning: queryItems)
+        HostedUISessionHolder.aswebAuthenticationSession?.cancel()
     }
 
 #endif

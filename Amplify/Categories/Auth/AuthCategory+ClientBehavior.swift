@@ -45,8 +45,8 @@ extension AuthCategory: AuthCategoryBehavior {
                                       options: options)
     }
 
-    public func continueFromDeepLink(queryItems: [URLQueryItem]) async throws -> Void {
-        return try await plugin.continueFromDeepLink(queryItems: queryItems)
+    public func continueFromDeepLink(queryItems: [URLQueryItem]) {
+        plugin.continueFromDeepLink(queryItems: queryItems)
     }
 #endif
 
