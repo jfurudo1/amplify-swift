@@ -13,7 +13,7 @@ import AuthenticationServices
 
 struct HostedUISessionHolder {
     static weak var aswebAuthenticationSession: ASWebAuthenticationSession?
-    static var callback: ((Result<[URLQueryItem], HostedUIError>) -> Void)?
+    static var continuation: CheckedContinuation<[URLQueryItem], Error>?
 }
 
 class HostedUIASWebAuthenticationSession: NSObject, HostedUISessionBehavior {
@@ -63,7 +63,7 @@ class HostedUIASWebAuthenticationSession: NSObject, HostedUISessionBehavior {
             aswebAuthenticationSession.presentationContextProvider = self
             aswebAuthenticationSession.prefersEphemeralWebBrowserSession = inPrivate
             HostedUISessionHolder.aswebAuthenticationSession = aswebAuthenticationSession
-            HostedUISessionHolder.callback = callback
+            HostedUISessionHolder.continuation = continuation
 
             DispatchQueue.main.async {
                 aswebAuthenticationSession.start()
