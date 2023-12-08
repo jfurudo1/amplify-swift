@@ -44,6 +44,10 @@ extension AuthCategory: AuthCategoryBehavior {
                                       presentationAnchor: presentationAnchor,
                                       options: options)
     }
+
+    public func continueFromDeepLink(queryItems: [URLQueryItem]) async throws -> Void {
+        return try await plugin.continueFromDeepLink(queryItems: queryItems)
+    }
 #endif
 
     public func confirmSignIn(challengeResponse: String, options: AuthConfirmSignInRequest.Options? = nil) async throws -> AuthSignInResult {

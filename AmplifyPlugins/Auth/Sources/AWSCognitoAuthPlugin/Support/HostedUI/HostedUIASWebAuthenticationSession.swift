@@ -11,6 +11,11 @@ import Amplify
 import AuthenticationServices
 #endif
 
+struct HostedUISessionHolder {
+    static weak var aswebAuthenticationSession: ASWebAuthenticationSession?
+    static var callback: ((Result<[URLQueryItem], HostedUIError>) -> Void)?
+}
+
 class HostedUIASWebAuthenticationSession: NSObject, HostedUISessionBehavior {
 
     weak var webPresentation: AuthUIPresentationAnchor?
@@ -48,6 +53,8 @@ class HostedUIASWebAuthenticationSession: NSObject, HostedUISessionBehavior {
             })
         aswebAuthenticationSession.presentationContextProvider = self
         aswebAuthenticationSession.prefersEphemeralWebBrowserSession = inPrivate
+        HostedUISessionHolder.aswebAuthenticationSession = aswebAuthenticationSession
+        HostedUISessionHolder.callback = callback
 
         DispatchQueue.main.async {
             aswebAuthenticationSession.start()

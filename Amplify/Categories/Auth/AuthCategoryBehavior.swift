@@ -83,6 +83,8 @@ public protocol AuthCategoryBehavior: AuthCategoryUserBehavior, AuthCategoryDevi
     func signInWithWebUI(for authProvider: AuthProvider,
                          presentationAnchor: AuthUIPresentationAnchor?,
                          options: AuthWebUISignInRequest.Options?) async throws -> AuthSignInResult
+
+    func continueFromDeepLink(queryItems: [URLQueryItem]) async throws -> Void
 #endif
 
     /// Confirms a next step in signIn flow.
