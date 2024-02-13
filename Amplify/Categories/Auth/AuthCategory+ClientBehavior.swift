@@ -9,7 +9,11 @@ import Foundation
 
 extension AuthCategory: AuthCategoryBehavior {
 
-    public func signUp( username: String, password: String? = nil, options: AuthSignUpRequest.Options? = nil) async throws -> AuthSignUpResult {
+    public func signUp(
+        username: String,
+        password: String? = nil,
+        options: AuthSignUpRequest.Options? = nil
+    ) async throws -> AuthSignUpResult {
         return try await plugin.signUp(username: username, password: password, options: options)
     }
 
@@ -19,7 +23,10 @@ extension AuthCategory: AuthCategoryBehavior {
         return try await plugin.confirmSignUp(for: username, confirmationCode: confirmationCode, options: options)
     }
 
-    public func resendSignUpCode(for username: String, options: AuthResendSignUpCodeRequest.Options? = nil) async throws -> AuthCodeDeliveryDetails {
+    public func resendSignUpCode(
+        for username: String,
+        options: AuthResendSignUpCodeRequest.Options? = nil
+    ) async throws -> AuthCodeDeliveryDetails {
             return try await plugin.resendSignUpCode(for: username, options: options)
     }
 
@@ -50,14 +57,17 @@ extension AuthCategory: AuthCategoryBehavior {
     }
 #endif
 
-    public func confirmSignIn(challengeResponse: String, options: AuthConfirmSignInRequest.Options? = nil) async throws -> AuthSignInResult {
+    public func confirmSignIn(
+        challengeResponse: String,
+        options: AuthConfirmSignInRequest.Options? = nil
+    ) async throws -> AuthSignInResult {
         return try await plugin.confirmSignIn(challengeResponse: challengeResponse, options: options)
     }
 
     public func signOut(options: AuthSignOutRequest.Options? = nil) async -> AuthSignOutResult {
         return await plugin.signOut(options: options)
     }
-    
+
     public func deleteUser() async throws {
         try await plugin.deleteUser()
     }
@@ -66,8 +76,11 @@ extension AuthCategory: AuthCategoryBehavior {
         return try await plugin.fetchAuthSession(options: options)
     }
 
-    public func resetPassword(for username: String, options: AuthResetPasswordRequest.Options? = nil) async throws -> AuthResetPasswordResult {
-        return try await plugin.resetPassword(for: username,options: options)
+    public func resetPassword(
+        for username: String,
+        options: AuthResetPasswordRequest.Options? = nil
+    ) async throws -> AuthResetPasswordResult {
+        return try await plugin.resetPassword(for: username, options: options)
     }
 
     public func confirmResetPassword(
@@ -76,7 +89,12 @@ extension AuthCategory: AuthCategoryBehavior {
         confirmationCode: String,
         options: AuthConfirmResetPasswordRequest.Options? = nil
     ) async throws {
-        try await plugin.confirmResetPassword(for: username, with: newPassword, confirmationCode: confirmationCode, options: options)
+        try await plugin.confirmResetPassword(
+            for: username,
+            with: newPassword,
+            confirmationCode: confirmationCode,
+            options: options
+        )
     }
 
     public func setUpTOTP() async throws -> TOTPSetupDetails {
