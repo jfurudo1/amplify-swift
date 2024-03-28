@@ -1,5 +1,51 @@
 # Changelog
 
+## 2.28.0 (2024-03-21)
+
+### Features
+
+- **Auth**: Adding forceAliasCreation option during confirmSignUp (#3382)
+
+## 2.27.3 (2024-03-18)
+
+### Bug Fixes
+
+- **Logging**: Updating the required reason API usage (#3570)
+
+## 2.27.2 (2024-03-11)
+
+### Bug Fixes
+
+- **DataStore**: created and deleted model on one device appears as created on the other (#3554)
+- **predictions**: Serialize the dispatch of web socket events (#3558)
+
+## 2.27.1 (2024-03-07)
+
+### Bug Fixes
+
+- add collected data types to privacy manifests (#3531)
+- **DataStore**: endless retry of mutation request when server responds with 401 error code (#3511) (#3512)
+- **amplify-xcode**: Fixing errors during amplify pull (#3536)
+
+## 2.27.0 (2024-02-22)
+
+### Features
+
+- Update aws-swift-sdk dependency to 0.36.1 (#3519)
+
+## 2.26.3 (2024-02-21)
+
+### Bug Fixes
+
+- **DataStore**: improve MutationEvent resiliency to interruptions (#3492)
+
+## 2.26.2 (2024-02-15)
+
+### Bug Fixes
+
+- **DataStore**: pass DataStore source for API decoding (#3515)
+- **DataStore**: serialize IncomingAsyncSubscriptionEventPublisher events (#3489)
+
 ## 2.26.1 (2024-02-12)
 
 ### Bug Fixes

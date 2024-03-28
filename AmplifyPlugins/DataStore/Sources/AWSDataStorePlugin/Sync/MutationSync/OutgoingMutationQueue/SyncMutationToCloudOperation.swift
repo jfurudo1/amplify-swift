@@ -191,7 +191,8 @@ class SyncMutationToCloudOperation: AsynchronousOperation {
             return nil
         }
 
-        let awsPluginOptions = AWSPluginOptions(authType: authType, modelName: mutationEvent.modelName)
+        let awsPluginOptions = AWSAPIPluginDataStoreOptions(authType: authType,
+                                                         modelName: mutationEvent.modelName)
         request.options = GraphQLRequest<MutationSyncResult>.Options(pluginOptions: awsPluginOptions)
         return request
     }
@@ -247,7 +248,7 @@ class SyncMutationToCloudOperation: AsynchronousOperation {
             }
 
             resolveReachabilityPublisher(request: request)
-            if let pluginOptions = request.options?.pluginOptions as? AWSPluginOptions, pluginOptions.authType != nil,
+            if let pluginOptions = request.options?.pluginOptions as? AWSAPIPluginDataStoreOptions, pluginOptions.authType != nil,
                let nextAuthType = authTypesIterator?.next() {
                 scheduleRetry(advice: advice, withAuthType: nextAuthType)
             } else {
@@ -320,7 +321,7 @@ class SyncMutationToCloudOperation: AsynchronousOperation {
 
     /// - Warning: Must be invoked from a locking context
     private func shouldRetryWithDifferentAuthType() -> RequestRetryAdvice {
-        let shouldRetry = (authTypesIterator?.count ?? 0) > 0
+        let shouldRetry = authTypesIterator?.hasNext == true
         return RequestRetryAdvice(shouldRetry: shouldRetry, retryInterval: .milliseconds(0))
     }
 
