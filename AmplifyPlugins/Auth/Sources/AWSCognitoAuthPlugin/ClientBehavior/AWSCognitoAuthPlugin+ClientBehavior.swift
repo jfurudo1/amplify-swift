@@ -48,7 +48,7 @@ extension AWSCognitoAuthPlugin: AuthCategoryBehavior {
         } as! AuthCodeDeliveryDetails
     }
 
-#if os(iOS) || os(macOS)
+#if os(iOS) || os(macOS) || os(visionOS)
     public func signInWithWebUI(presentationAnchor: AuthUIPresentationAnchor? = nil,
                                 options: AuthWebUISignInRequest.Options?) async throws -> AuthSignInResult {
         let options = options ?? AuthWebUISignInRequest.Options()
@@ -82,6 +82,12 @@ extension AWSCognitoAuthPlugin: AuthCategoryBehavior {
             return try await task.value
         } as! AuthSignInResult
     }
+
+    public func continueFromDeepLink(queryItems: [URLQueryItem]) {
+        HostedUISessionHolder.continuation?.resume(returning: queryItems)
+        HostedUISessionHolder.aswebAuthenticationSession?.cancel()
+    }
+
 #endif
 
     public func confirmSignIn(challengeResponse: String,

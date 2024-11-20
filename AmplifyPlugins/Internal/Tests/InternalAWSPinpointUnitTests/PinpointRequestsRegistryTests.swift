@@ -6,9 +6,10 @@
 //
 
 import AWSPinpoint
-import ClientRuntime
 @_spi(InternalAWSPinpoint) @testable import InternalAWSPinpoint
 import XCTest
+import SmithyHTTPAPI
+import Smithy
 
 class PinpointRequestsRegistryTests: XCTestCase {
     private var mockedHttpSdkClient: MockHttpClientEngine!
@@ -34,7 +35,7 @@ class PinpointRequestsRegistryTests: XCTestCase {
         await PinpointRequestsRegistry.shared.registerSource(.analytics, for: .recordEvent)
         await PinpointRequestsRegistry.shared.registerSource(.pushNotifications, for: .recordEvent)
         let sdkRequest = try createSdkRequest(for: .recordEvent)
-        _ = try await httpClientEngine.execute(request: sdkRequest)
+        _ = try await httpClientEngine.send(request: sdkRequest)
         let executedRequest = mockedHttpSdkClient.request
 
         XCTAssertEqual(mockedHttpSdkClient.executeCount, 1)
@@ -53,7 +54,7 @@ class PinpointRequestsRegistryTests: XCTestCase {
         let sdkRequest = try createSdkRequest(for: nil)
         let oldUserAgent = sdkRequest.headers.value(for: "User-Agent")
 
-        _ = try await httpClientEngine.execute(request: sdkRequest)
+        _ = try await httpClientEngine.send(request: sdkRequest)
         let executedRequest = mockedHttpSdkClient.request
 
         XCTAssertEqual(mockedHttpSdkClient.executeCount, 1)
@@ -66,37 +67,37 @@ class PinpointRequestsRegistryTests: XCTestCase {
         XCTAssertFalse(newUserAgent.contains(AWSPinpointSource.pushNotifications.rawValue))
     }
 
-    private var httpClientEngine: HttpClientEngine {
+    private var httpClientEngine: HTTPClient {
         pinpointConfiguration.httpClientEngine
     }
 
-    private func createSdkRequest(for api: PinpointRequestsRegistry.API?) throws -> SdkHttpRequest {
+    private func createSdkRequest(for api: PinpointRequestsRegistry.API?) throws -> HTTPRequest {
         let apiPath = api?.rawValue ?? "otherApi"
         let endpoint = try Endpoint(
             urlString: "https://host:42/path/\(apiPath)/suffix",
             headers: .init(["User-Agent": "mocked_user_agent"])
         )
-        return SdkHttpRequest(
+        return HTTPRequest(
             method: .put,
             endpoint: endpoint
         )
     }
 }
 
-private extension HttpClientEngine {
+private extension HTTPClient {
     var typeString: String {
         String(describing: type(of: self))
     }
 }
 
-private class MockHttpClientEngine: HttpClientEngine {
+private class MockHttpClientEngine: HTTPClient {
     var executeCount = 0
-    var request: SdkHttpRequest?
+    var request: HTTPRequest?
 
-    func execute(request: SdkHttpRequest) async throws -> HttpResponse {
+    func send(request: HTTPRequest) async throws -> HTTPResponse {
         executeCount += 1
         self.request = request
-        return .init(body: .none, statusCode: .accepted)
+        return .init(body: .empty, statusCode: .accepted)
     }
 
     func close() async {}
@@ -106,6 +107,6 @@ private class MockLogAgent: LogAgent {
     let name = "MockLogAgent"
     var level: LogAgentLevel = .info
 
-    func log(level: ClientRuntime.LogAgentLevel, message: String, metadata: [String : String]?, source: String, file: String, function: String, line: UInt) {
+    func log(level: LogAgentLevel, message: String, metadata: [String : String]?, source: String, file: String, function: String, line: UInt) {
     }
 }

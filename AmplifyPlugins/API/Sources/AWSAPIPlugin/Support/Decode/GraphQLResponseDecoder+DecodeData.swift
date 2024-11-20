@@ -47,18 +47,31 @@ extension GraphQLResponseDecoder {
                   case .object(var graphQLDataObject) = graphQLData,
                   case .array(var graphQLDataArray) = graphQLDataObject["items"] {
             for (index, item) in graphQLDataArray.enumerated() {
-                let modelJSON = AppSyncModelMetadataUtils.addMetadata(toModel: item,
-                                                                      apiName: request.apiName)
+                let modelJSON: JSONValue
+                if let _ = (request.options.pluginOptions as? AWSAPIPluginDataStoreOptions) {
+                    modelJSON = AppSyncModelMetadataUtils.addMetadata(
+                        toModel: item,
+                        apiName: request.apiName,
+                        authMode: request.authMode as? AWSAuthorizationType,
+                        source: ModelProviderRegistry.DecoderSource.dataStore)
+                } else {
+                    modelJSON = AppSyncModelMetadataUtils.addMetadata(
+                        toModel: item,
+                        apiName: request.apiName,
+                        authMode: request.authMode as? AWSAuthorizationType)
+                }
                 graphQLDataArray[index] = modelJSON
             }
             graphQLDataObject["items"] = JSONValue.array(graphQLDataArray)
             let payload = AppSyncListPayload(graphQLData: JSONValue.object(graphQLDataObject),
                                              apiName: request.apiName,
+                                             authMode: request.authMode as? AWSAuthorizationType,
                                              variables: try getVariablesJSON())
             serializedJSON = try encoder.encode(payload)
         } else if AppSyncModelMetadataUtils.shouldAddMetadata(toModel: graphQLData) { // 4
             let modelJSON = AppSyncModelMetadataUtils.addMetadata(toModel: graphQLData,
-                                                                  apiName: request.apiName)
+                                                                  apiName: request.apiName,
+                                                                  authMode: request.authMode as? AWSAuthorizationType)
             serializedJSON = try encoder.encode(modelJSON)
         } else { // 5
             serializedJSON = try encoder.encode(graphQLData)
@@ -107,7 +120,7 @@ extension GraphQLResponseDecoder {
     // latest version of the developer's app will continue to work because the the mutation request sent from the
     // latest library continues to have the typename field.
     private func shouldAddTypename(to graphQLData: JSONValue) -> JSONValue? {
-        if let modelName = modelName,
+        if let modelName = dataStorePluginOptions?.modelName,
            request.responseType == MutationSync<AnyModel>.self,
            case var .object(modelJSON) = graphQLData,
            // No need to replace existing response payloads that have it already

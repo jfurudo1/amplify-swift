@@ -209,9 +209,7 @@ class AWSAuthFetchSignInSessionOperationTests: BaseAuthorizationTests {
                 AmplifyCredentials.testDataWithExpiredTokens))
 
         let initAuth: MockIdentityProvider.MockInitiateAuthResponse = { _ in
-            throw try await AWSCognitoIdentityProvider.NotAuthorizedException(
-                httpResponse: MockHttpResponse.ok
-            )
+            throw AWSCognitoIdentityProvider.NotAuthorizedException()
         }
 
         let plugin = configurePluginWith(userPool: { MockIdentityProvider(mockInitiateAuthResponse: initAuth) }, initialState: initialState)
@@ -266,9 +264,7 @@ class AWSAuthFetchSignInSessionOperationTests: BaseAuthorizationTests {
         }
 
         let awsCredentials: MockIdentity.MockGetCredentialsResponse = { _ in
-            throw try await AWSCognitoIdentityProvider.NotAuthorizedException(
-                httpResponse: MockHttpResponse.ok
-            )
+            throw AWSCognitoIdentityProvider.NotAuthorizedException()
         }
 
         let plugin = configurePluginWith(
@@ -584,6 +580,59 @@ class AWSAuthFetchSignInSessionOperationTests: BaseAuthorizationTests {
         }
     }
 
+    /// Test fetch session with authorization in error state
+    ///
+    /// - Given: An auth plugin with signedOut state
+    /// - When:
+    ///    - I invoke fetchAuthSession and mock notSignedIn for getTokens
+    /// - Then:
+    ///    - I should get an a valid session with the following details:
+    ///         - isSignedIn = false
+    ///         - aws credentails = valid values
+    ///         - identity id = valid values
+    ///         - cognito tokens = signedOut
+    ///
+    func testFetchSessionWithAuthorizationInErrorState() async throws {
+
+        let initialState = AuthState.configured(
+            AuthenticationState.signedOut(.testData),
+            AuthorizationState.error(.sessionError(.service(AuthError.unknown("error")), .noCredentials)))
+
+        let getId: MockIdentity.MockGetIdResponse = { _ in
+            return .init(identityId: "mockIdentityId")
+        }
+
+        let getCredentials: MockIdentity.MockGetCredentialsResponse = { _ in
+            let credentials = CognitoIdentityClientTypes.Credentials(accessKeyId: "accessKey",
+                                                                     expiration: Date(),
+                                                                     secretKey: "secret",
+                                                                     sessionToken: "session")
+            return .init(credentials: credentials, identityId: "responseIdentityID")
+        }
+
+        let plugin = configurePluginWith(identityPool: {
+            MockIdentity(mockGetIdResponse: getId,
+                         mockGetCredentialsResponse: getCredentials) },
+                                         initialState: initialState)
+
+        let session = try await plugin.fetchAuthSession(options: AuthFetchSessionRequest.Options())
+        XCTAssertFalse(session.isSignedIn)
+
+        let creds = try? (session as? AuthAWSCredentialsProvider)?.getAWSCredentials().get()
+        XCTAssertNotNil(creds?.accessKeyId)
+        XCTAssertNotNil(creds?.secretAccessKey)
+
+        let identityId = try? (session as? AuthCognitoIdentityProvider)?.getIdentityId().get()
+        XCTAssertNotNil(identityId)
+
+        let tokensResult = (session as? AuthCognitoTokensProvider)?.getCognitoTokens()
+        guard case .failure(let error) = tokensResult,
+              case .signedOut = error else {
+            XCTFail("Should return signed out error")
+            return
+        }
+    }
+
     /// Test signedOut state credential refresh
     ///
     /// - Given: Given an auth plugin with signedOut state and expired AWS credentials
@@ -702,7 +751,7 @@ class AWSAuthFetchSignInSessionOperationTests: BaseAuthorizationTests {
     ///
     func testSessionWhenWaitingConfirmSignIn() async throws {
         let signInMethod = SignInMethod.apiBased(.userSRP)
-        let challenge = SignInChallengeState.waitingForAnswer(.testData(), signInMethod)
+        let challenge = SignInChallengeState.waitingForAnswer(.testData(), signInMethod, .confirmSignInWithTOTPCode)
         let initialState = AuthState.configured(
             AuthenticationState.signingIn(
                 .resolvingChallenge(challenge, .smsMfa, signInMethod)),
@@ -735,5 +784,62 @@ class AWSAuthFetchSignInSessionOperationTests: BaseAuthorizationTests {
 
         let identityId = try? (session as? AuthCognitoIdentityProvider)?.getIdentityId().get()
         XCTAssertNotNil(identityId)
+    }
+
+    /// Test signedIn session with invalid response for aws credentials
+    ///
+    /// - Given: Given an auth plugin with signedIn state
+    /// - When:
+    ///    - I invoke fetchAuthSession and service throws NSError
+    /// - Then:
+    ///    - I should get an a valid session with the following details:
+    ///         - isSignedIn = true
+    ///         - aws credentails = service error
+    ///         - identity id = service error
+    ///         - cognito tokens = service error
+    ///
+    func testSignInSessionWithNSError() async throws {
+        let initialState = AuthState.configured(
+            AuthenticationState.signedIn(.testData),
+            AuthorizationState.sessionEstablished(
+                AmplifyCredentials.testDataWithExpiredTokens))
+
+        let initAuth: MockIdentityProvider.MockInitiateAuthResponse = { _ in
+            return InitiateAuthOutput(authenticationResult: .init(accessToken: "accessToken",
+                                                                  expiresIn: 1000,
+                                                                  idToken: "idToken",
+                                                                  refreshToken: "refreshToke"))
+        }
+
+        let awsCredentials: MockIdentity.MockGetCredentialsResponse = { _ in
+            throw NSError(domain: NSURLErrorDomain, code: 1, userInfo: nil)
+        }
+        let plugin = configurePluginWith(
+            userPool: { MockIdentityProvider(mockInitiateAuthResponse: initAuth) },
+            identityPool: { MockIdentity(mockGetCredentialsResponse: awsCredentials) },
+            initialState: initialState)
+
+        let session = try await plugin.fetchAuthSession(options: AuthFetchSessionRequest.Options())
+
+        XCTAssertTrue(session.isSignedIn)
+        let credentialsResult = (session as? AuthAWSCredentialsProvider)?.getAWSCredentials()
+        guard case .failure(let error) = credentialsResult, case .service = error else {
+            XCTFail("Should return service error")
+            return
+        }
+
+        let identityIdResult = (session as? AuthCognitoIdentityProvider)?.getIdentityId()
+        guard case .failure(let identityIdError) = identityIdResult,
+              case .service = identityIdError else {
+            XCTFail("Should return service error")
+            return
+        }
+
+        let tokensResult = (session as? AuthCognitoTokensProvider)?.getCognitoTokens()
+        guard case .failure(let tokenError) = tokensResult,
+              case .service = tokenError else {
+            XCTFail("Should return service error")
+            return
+        }
     }
 }

@@ -14,19 +14,20 @@ import Foundation
 class CloudWatchLoggingConsumer {
 
     private let client: CloudWatchLogsClientProtocol
+    private let formatter: CloudWatchLoggingStreamNameFormatter
     private let logGroupName: String
-    private let logStreamName: String
+    private var logStreamName: String?
     private var ensureLogStreamExistsComplete: Bool = false
     private let encoder = JSONEncoder()
+
     init(
         client: CloudWatchLogsClientProtocol,
         logGroupName: String,
         userIdentifier: String?
-    ) throws {
+    ) {
         self.client = client
-        let formatter = CloudWatchLoggingStreamNameFormatter(userIdentifier: userIdentifier)
+        self.formatter = CloudWatchLoggingStreamNameFormatter(userIdentifier: userIdentifier)
         self.logGroupName = logGroupName
-        self.logStreamName = formatter.formattedStreamName()
     }
 }
 
@@ -75,7 +76,11 @@ extension CloudWatchLoggingConsumer: LogBatchConsumer {
             ensureLogStreamExistsComplete = true
         }
 
-        let stream = try? await self.client.describeLogStreams(input: .init(
+        if logStreamName == nil {
+            self.logStreamName = await formatter.formattedStreamName()
+        }
+        
+        let stream = try? await self.client.describeLogStreams(input: DescribeLogStreamsInput(
             logGroupName: self.logGroupName,
             logStreamNamePrefix: self.logStreamName
         )).logStreams?.first(where: { stream in
@@ -85,7 +90,7 @@ extension CloudWatchLoggingConsumer: LogBatchConsumer {
             return
         }
 
-        _ = try? await self.client.createLogStream(input: .init(
+        _ = try? await self.client.createLogStream(input: CreateLogStreamInput(
             logGroupName: self.logGroupName,
             logStreamName: self.logStreamName
         ))

@@ -7,9 +7,8 @@
 
 import Foundation
 import AWSPinpoint
-import ClientRuntime
-@_spi(PluginHTTPClientEngine)
-import AWSPluginsCore
+@_spi(PluginHTTPClientEngine) import InternalAmplifyCredentials
+import SmithyHTTPAPI
 
 @globalActor actor PinpointRequestsRegistry {
     static let shared = PinpointRequestsRegistry()
@@ -53,26 +52,26 @@ import AWSPluginsCore
     }
 }
 
-private struct CustomPinpointHttpClientEngine: HttpClientEngine {
+private struct CustomPinpointHttpClientEngine: HTTPClient {
     private let userAgentHeader = "User-Agent"
-    private let httpClientEngine: HttpClientEngine
+    private let httpClientEngine: HTTPClient
 
-    init(httpClientEngine: HttpClientEngine) {
+    init(httpClientEngine: HTTPClient) {
         self.httpClientEngine = httpClientEngine
     }
 
-    func execute(request: ClientRuntime.SdkHttpRequest) async throws -> ClientRuntime.HttpResponse {
+    func send(request: HTTPRequest) async throws -> HTTPResponse {
         guard let url = request.endpoint.url,
               let pinpointApi = PinpointRequestsRegistry.API(from: url),
               let userAgentSuffix = await userAgent(for: pinpointApi) else {
-            return try await httpClientEngine.execute(request: request)
+            return try await httpClientEngine.send(request: request)
         }
 
         let currentUserAgent = request.headers.value(for: userAgentHeader) ?? ""
         let updatedRequest = request.updatingUserAgent(with: "\(currentUserAgent) \(userAgentSuffix)")
 
         await PinpointRequestsRegistry.shared.unregisterSources(for: pinpointApi)
-        return try await httpClientEngine.execute(request: updatedRequest)
+        return try await httpClientEngine.send(request: updatedRequest)
     }
 
     private func userAgent(for api: PinpointRequestsRegistry.API) async -> String? {

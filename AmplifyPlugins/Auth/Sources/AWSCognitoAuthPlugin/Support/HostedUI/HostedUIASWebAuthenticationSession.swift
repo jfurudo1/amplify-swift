@@ -7,9 +7,14 @@
 
 import Foundation
 import Amplify
-#if os(iOS) || os(macOS)
+#if os(iOS) || os(macOS) || os(visionOS)
 import AuthenticationServices
 #endif
+
+struct HostedUISessionHolder {
+    static weak var aswebAuthenticationSession: ASWebAuthenticationSession?
+    static var continuation: CheckedContinuation<[URLQueryItem], Error>?
+}
 
 class HostedUIASWebAuthenticationSession: NSObject, HostedUISessionBehavior {
 
@@ -21,7 +26,7 @@ class HostedUIASWebAuthenticationSession: NSObject, HostedUISessionBehavior {
         inPrivate: Bool,
         presentationAnchor: AuthUIPresentationAnchor?) async throws -> [URLQueryItem] {
 
-    #if os(iOS) || os(macOS)
+    #if os(iOS) || os(macOS) || os(visionOS)
         self.webPresentation = presentationAnchor
 
         return try await withCheckedThrowingContinuation { [weak self]
@@ -59,6 +64,8 @@ class HostedUIASWebAuthenticationSession: NSObject, HostedUISessionBehavior {
                 })
             aswebAuthenticationSession.presentationContextProvider = self
             aswebAuthenticationSession.prefersEphemeralWebBrowserSession = inPrivate
+            HostedUISessionHolder.aswebAuthenticationSession = aswebAuthenticationSession
+            HostedUISessionHolder.continuation = continuation
 
             DispatchQueue.main.async {
                 var canStart = true
@@ -67,16 +74,18 @@ class HostedUIASWebAuthenticationSession: NSObject, HostedUISessionBehavior {
                 }
                 if canStart {
                     aswebAuthenticationSession.start()
+                } else {
+                    continuation.resume( throwing: HostedUIError.unableToStartASWebAuthenticationSession)
                 }
             }
         }
 
     #else
-        throw HostedUIError.serviceMessage("HostedUI is only available in iOS and macOS")
+        throw HostedUIError.serviceMessage("HostedUI is only available in iOS, macOS and visionOS")
     #endif
     }
 
-#if os(iOS) || os(macOS)
+#if os(iOS) || os(macOS) || os(visionOS)
     var authenticationSessionFactory = ASWebAuthenticationSession.init(url:callbackURLScheme:completionHandler:)
 
     private func createAuthenticationSession(
@@ -105,9 +114,10 @@ class HostedUIASWebAuthenticationSession: NSObject, HostedUISessionBehavior {
 #endif
 }
 
-#if os(iOS) || os(macOS)
+#if os(iOS) || os(macOS) || os(visionOS)
 extension HostedUIASWebAuthenticationSession: ASWebAuthenticationPresentationContextProviding {
 
+    @MainActor
     func presentationAnchor(for session: ASWebAuthenticationSession) -> ASPresentationAnchor {
         return webPresentation ?? ASPresentationAnchor()
     }

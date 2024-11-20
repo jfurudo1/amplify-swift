@@ -8,7 +8,7 @@
 import Foundation
 import Amplify
 
-class FetchAuthSessionOperationHelper: DefaultLogger {
+class FetchAuthSessionOperationHelper {
 
     typealias FetchAuthSessionCompletion = (Result<AuthSession, AuthError>) -> Void
 
@@ -66,23 +66,21 @@ class FetchAuthSessionOperationHelper: DefaultLogger {
         authStateMachine: AuthStateMachine,
         forceRefresh: Bool) async throws -> AuthSession {
 
-            var event: AuthorizationEvent
             if forceRefresh || !credentials.areValid() {
-                if case .identityPoolWithFederation(
-                    let federatedToken,
-                    let identityId,
-                    _
-                ) = credentials {
-                    event = AuthorizationEvent(
-                        eventType: .startFederationToIdentityPool(federatedToken, identityId)
-                    )
-                } else {
+                var event: AuthorizationEvent
+                switch credentials {
+                case .identityPoolWithFederation(let federatedToken, let identityId, _):
+                    event = AuthorizationEvent(eventType: .startFederationToIdentityPool(federatedToken, identityId))
+                case .noCredentials:
+                    event = AuthorizationEvent(eventType: .fetchUnAuthSession)
+                case .userPoolOnly, .identityPoolOnly, .userPoolAndIdentityPool:
                     event = AuthorizationEvent(eventType: .refreshSession(forceRefresh))
                 }
                 await authStateMachine.send(event)
                 return try await listenForSession(authStateMachine: authStateMachine)
+            } else {
+                return credentials.cognitoSession
             }
-            return credentials.cognitoSession
         }
 
     func listenForSession(authStateMachine: AuthStateMachine) async throws -> AuthSession {
@@ -110,77 +108,41 @@ class FetchAuthSessionOperationHelper: DefaultLogger {
                                      "Auth plugin is in an invalid state")
     }
 
-    func sessionResultWithError(_ error: AuthorizationError,
-                                authenticationState: AuthenticationState)
-    throws -> AuthSession {
-        log.verbose("Received error - \(error)")
+    func sessionResultWithError(
+        _ error: AuthorizationError,
+        authenticationState: AuthenticationState
+    ) throws -> AuthSession {
+        log.verbose("Received fetch auth session error - \(error)")
 
         var isSignedIn = false
+        var authError: AuthError = error.authError
+
         if case .signedIn = authenticationState {
             isSignedIn = true
         }
+
         switch error {
-        case .sessionError(let fetchError, let credentials):
-            return try sessionResultWithFetchError(fetchError,
-                                                   authenticationState: authenticationState,
-                                                   existingCredentials: credentials)
+        case .sessionError(let fetchError, _):
+            if (fetchError == .notAuthorized || fetchError == .noCredentialsToRefresh) && !isSignedIn {
+                return AuthCognitoSignedOutSessionHelper.makeSessionWithNoGuestAccess()
+            } else {
+                authError = fetchError.authError
+            }
         case .sessionExpired(let error):
             let session = AuthCognitoSignedInSessionHelper.makeExpiredSignedInSession(
                 underlyingError: error)
             return session
         default:
-            let message = "Unknown error occurred"
-            let error = AuthError.unknown(message)
-            let session = AWSAuthCognitoSession(isSignedIn: isSignedIn,
-                                                identityIdResult: .failure(error),
-                                                awsCredentialsResult: .failure(error),
-                                                cognitoTokensResult: .failure(error))
-            return session
-        }
-    }
-
-    func sessionResultWithFetchError(_ error: FetchSessionError,
-                                     authenticationState: AuthenticationState,
-                                     existingCredentials: AmplifyCredentials)
-    throws -> AuthSession {
-
-        var isSignedIn = false
-        if case .signedIn = authenticationState {
-            isSignedIn = true
+            break
         }
 
-        switch error {
-
-        case .notAuthorized, .noCredentialsToRefresh:
-            if !isSignedIn {
-                return AuthCognitoSignedOutSessionHelper.makeSessionWithNoGuestAccess()
-            }
-
-        case .service(let error):
-            if let authError = (error as? AuthErrorConvertible)?.authError {
-                let session = AWSAuthCognitoSession(isSignedIn: isSignedIn,
-                                                    identityIdResult: .failure(authError),
-                                                    awsCredentialsResult: .failure(authError),
-                                                    cognitoTokensResult: .failure(authError))
-                return session
-            }
-        default: break
-
-        }
-        let message = "Unknown error occurred"
-        let error = AuthError.unknown(message)
-        let session = AWSAuthCognitoSession(isSignedIn: isSignedIn,
-                                            identityIdResult: .failure(error),
-                                            awsCredentialsResult: .failure(error),
-                                            cognitoTokensResult: .failure(error))
+        let session = AWSAuthCognitoSession(
+            isSignedIn: isSignedIn,
+            identityIdResult: .failure(authError),
+            awsCredentialsResult: .failure(authError),
+            cognitoTokensResult: .failure(authError))
         return session
     }
-
-    public static var log: Logger {
-        Amplify.Logging.logger(forCategory: CategoryType.auth.displayName, forNamespace: String(describing: self))
-    }
-
-    public var log: Logger {
-        Self.log
-    }
 }
+
+extension FetchAuthSessionOperationHelper: DefaultLogger { }

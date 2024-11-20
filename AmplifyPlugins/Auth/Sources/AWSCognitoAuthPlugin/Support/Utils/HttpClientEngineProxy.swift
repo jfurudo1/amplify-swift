@@ -5,12 +5,12 @@
 // SPDX-License-Identifier: Apache-2.0
 //
 
-@_spi(InternalHttpEngineProxy) @_spi(InternalAmplifyPluginExtension) import AWSPluginsCore
-import ClientRuntime
+@_spi(InternalHttpEngineProxy) @_spi(InternalAmplifyPluginExtension) import InternalAmplifyCredentials
 import Foundation
+import SmithyHTTPAPI
 
-protocol HttpClientEngineProxy: HttpClientEngine {
-    var target: HttpClientEngine? { get set }
+protocol HttpClientEngineProxy: HTTPClient {
+    var target: HTTPClient? { get set }
 }
 
 extension UserAgentSuffixAppender: HttpClientEngineProxy {}

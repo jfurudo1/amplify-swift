@@ -10,7 +10,7 @@ import AWSCognitoIdentity
 @testable import Amplify
 @testable import AWSCognitoAuthPlugin
 import AWSCognitoIdentityProvider
-import AWSClientRuntime
+@_spi(UnknownAWSHTTPServiceError) import AWSClientRuntime
 
 class SignInSetUpTOTPTests: BasePluginTest {
 
@@ -76,7 +76,7 @@ class SignInSetUpTOTPTests: BasePluginTest {
                 session: "session")
         }, mockAssociateSoftwareTokenResponse: { _ in
             return .init(secretCode: "123456", session: "session")
-        } )
+        })
 
         let options = AuthSignInRequest.Options()
         do {

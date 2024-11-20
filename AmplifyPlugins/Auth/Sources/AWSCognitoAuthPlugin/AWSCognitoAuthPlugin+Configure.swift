@@ -6,15 +6,16 @@
 //
 
 import Foundation
-import Amplify
-
+@_spi(InternalAmplifyConfiguration) import Amplify
 import AWSCognitoIdentity
 import AWSCognitoIdentityProvider
 import AWSPluginsCore
 import ClientRuntime
 import AWSClientRuntime
-@_spi(PluginHTTPClientEngine) import AWSPluginsCore
+@_spi(PluginHTTPClientEngine) import InternalAmplifyCredentials
 @_spi(InternalHttpEngineProxy) import AWSPluginsCore
+import SmithyRetriesAPI
+import SmithyRetries
 
 extension AWSCognitoAuthPlugin {
 
@@ -24,16 +25,18 @@ extension AWSCognitoAuthPlugin {
     /// - Throws:
     ///   - PluginError.pluginConfigurationError: If one of the configuration values is invalid or empty
     public func configure(using configuration: Any?) throws {
-
-        guard let jsonValueConfiguration = configuration as? JSONValue else {
+        let authConfiguration: AuthConfiguration
+        if let configuration = configuration as? AmplifyOutputsData {
+            authConfiguration = try ConfigurationHelper.authConfiguration(configuration)
+            jsonConfiguration = ConfigurationHelper.createUserPoolJsonConfiguration(authConfiguration)
+        } else if let jsonValueConfiguration = configuration as? JSONValue {
+            jsonConfiguration = jsonValueConfiguration
+            authConfiguration = try ConfigurationHelper.authConfiguration(jsonValueConfiguration)
+        } else {
             throw PluginError.pluginConfigurationError(
                 AuthPluginErrorConstants.decodeConfigurationError.errorDescription,
                 AuthPluginErrorConstants.decodeConfigurationError.recoverySuggestion)
         }
-
-        jsonConfiguration = jsonValueConfiguration
-
-        let authConfiguration = try ConfigurationHelper.authConfiguration(jsonValueConfiguration)
 
         let credentialStoreResolver = CredentialStoreState.Resolver().eraseToAnyResolver()
         let credentialEnvironment = credentialStoreEnvironment(authConfiguration: authConfiguration)
@@ -90,7 +93,8 @@ extension AWSCognitoAuthPlugin {
         case .userPools(let userPoolConfig), .userPoolsAndIdentityPools(let userPoolConfig, _):
             let configuration = try CognitoIdentityProviderClient.CognitoIdentityProviderClientConfiguration(
                 region: userPoolConfig.region,
-                serviceSpecific: .init(endpointResolver: userPoolConfig.endpoint?.resolver)
+                signingRegion: userPoolConfig.region,
+                endpointResolver: userPoolConfig.endpoint?.resolver
             )
 
             if var httpClientEngineProxy = httpClientEngineProxy {
@@ -103,13 +107,18 @@ extension AWSCognitoAuthPlugin {
             }
 
             if let requestTimeout = networkPreferences?.timeoutIntervalForRequest {
-                let requestTimeOutMs = requestTimeout * 1_000
-                configuration.connectTimeoutMs = UInt32(requestTimeOutMs)
+                configuration.httpClientConfiguration = HttpClientConfiguration(connectTimeout: requestTimeout)
             }
 
             if let maxRetryUnwrapped = networkPreferences?.maxRetryCount {
-                configuration.retryStrategyOptions = RetryStrategyOptions(maxRetriesBase: Int(maxRetryUnwrapped))
+                configuration.retryStrategyOptions = RetryStrategyOptions(
+                    backoffStrategy: ExponentialBackoffStrategy(),
+                    maxRetriesBase: Int(maxRetryUnwrapped)
+                )
             }
+
+            let authService = AWSAuthService()
+            configuration.awsCredentialIdentityResolver = authService.getCredentialIdentityResolver()
 
             return CognitoIdentityProviderClient(config: configuration)
         default:
@@ -126,13 +135,18 @@ extension AWSCognitoAuthPlugin {
             configuration.httpClientEngine = .userAgentEngine(for: configuration)
 
             if let requestTimeout = networkPreferences?.timeoutIntervalForRequest {
-                let requestTimeOutMs = requestTimeout * 1_000
-                configuration.connectTimeoutMs = UInt32(requestTimeOutMs)
+                configuration.httpClientConfiguration = HttpClientConfiguration(connectTimeout: requestTimeout)
             }
 
             if let maxRetryUnwrapped = networkPreferences?.maxRetryCount {
-                configuration.retryStrategyOptions = RetryStrategyOptions(maxRetriesBase: Int(maxRetryUnwrapped))
+                configuration.retryStrategyOptions = RetryStrategyOptions(
+                    backoffStrategy: ExponentialBackoffStrategy(),
+                    maxRetriesBase: Int(maxRetryUnwrapped)
+                )
             }
+
+            let authService = AWSAuthService()
+            configuration.awsCredentialIdentityResolver = authService.getCredentialIdentityResolver()
 
             return CognitoIdentityClient(config: configuration)
         default:

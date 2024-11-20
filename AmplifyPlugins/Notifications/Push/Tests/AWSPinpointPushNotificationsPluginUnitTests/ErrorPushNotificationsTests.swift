@@ -6,13 +6,11 @@
 //
 
 @testable import Amplify
-import AWSClientRuntime
-import AwsCommonRuntimeKit
 import AWSPinpoint
 @testable import AWSPinpointPushNotificationsPlugin
-import ClientRuntime
 import Foundation
 import XCTest
+@_spi(UnknownAWSHTTPServiceError) import AWSClientRuntime
 
 class ErrorPushNotificationsTests: XCTestCase {
     /// Given: A NSError error
@@ -72,12 +70,19 @@ class ErrorPushNotificationsTests: XCTestCase {
             }
         }
     }
+}
+
+#if canImport(AWSClientRuntime)
+import AWSClientRuntime
+
+extension ErrorPushNotificationsTests {
 
     /// Given: An UnknownAWSHTTPServiceError
     /// When: pushNotificationsError is invoked
     /// Then: A .unknown error is returned
     func testPushNotificationError_withUnknownAWSHTTPServiceError_shouldReturnUnknownError() {
-        let error = UnknownAWSHTTPServiceError(httpResponse: .init(body: .none, statusCode: .accepted), message: "UnknownAWSHTTPServiceError", requestID: nil, typeName: nil)
+        let error = UnknownAWSHTTPServiceError(
+            httpResponse: .init(body: .empty, statusCode: .accepted), message: "UnknownAWSHTTPServiceError", requestID: nil, typeName: nil)
         let pushNotificationsError = error.pushNotificationsError
         switch pushNotificationsError {
         case .unknown(let errorDescription, let underlyingError):
@@ -87,6 +92,14 @@ class ErrorPushNotificationsTests: XCTestCase {
             XCTFail("Expected error of type .unknown, got \(pushNotificationsError)")
         }
     }
+}
+
+#endif
+
+#if canImport(AwsCommonRuntimeKit)
+import AwsCommonRuntimeKit
+
+extension ErrorPushNotificationsTests {
 
     /// Given: A CommonRunTimeError.crtError
     /// When: pushNotificationsError is invoked
@@ -103,3 +116,5 @@ class ErrorPushNotificationsTests: XCTestCase {
         }
     }
 }
+
+#endif

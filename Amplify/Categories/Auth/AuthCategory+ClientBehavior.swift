@@ -36,7 +36,7 @@ extension AuthCategory: AuthCategoryBehavior {
         return try await plugin.signIn(username: username, password: password, options: options)
     }
 
-#if os(iOS) || os(macOS)
+#if os(iOS) || os(macOS) || os(visionOS)
     public func signInWithWebUI(
         presentationAnchor: AuthUIPresentationAnchor? = nil,
         options: AuthWebUISignInRequest.Options? = nil) async throws -> AuthSignInResult {
@@ -50,6 +50,10 @@ extension AuthCategory: AuthCategoryBehavior {
         return try await plugin.signInWithWebUI(for: authProvider,
                                       presentationAnchor: presentationAnchor,
                                       options: options)
+    }
+
+    public func continueFromDeepLink(queryItems: [URLQueryItem]) {
+        plugin.continueFromDeepLink(queryItems: queryItems)
     }
 #endif
 

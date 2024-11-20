@@ -13,8 +13,9 @@ extension ConfirmSignUpInput {
          confirmationCode: String,
          clientMetadata: [String: String]?,
          asfDeviceId: String?,
+         forceAliasCreation: Bool?,
          environment: UserPoolEnvironment
-    ) {
+    ) async {
 
         let configuration = environment.userPoolConfiguration
         let secretHash = ClientSecretHelper.calculateSecretHash(
@@ -22,7 +23,7 @@ extension ConfirmSignUpInput {
             userPoolConfiguration: configuration)
         var userContextData: CognitoIdentityProviderClientTypes.UserContextDataType?
         if let asfDeviceId = asfDeviceId,
-           let encodedData = CognitoUserPoolASF.encodedContext(
+           let encodedData = await CognitoUserPoolASF.encodedContext(
             username: username,
             asfDeviceId: asfDeviceId,
             asfClient: environment.cognitoUserPoolASFFactory(),
@@ -37,6 +38,7 @@ extension ConfirmSignUpInput {
             clientId: configuration.clientId,
             clientMetadata: clientMetadata,
             confirmationCode: confirmationCode,
+            forceAliasCreation: forceAliasCreation,
             secretHash: secretHash,
             userContextData: userContextData,
             username: username)
