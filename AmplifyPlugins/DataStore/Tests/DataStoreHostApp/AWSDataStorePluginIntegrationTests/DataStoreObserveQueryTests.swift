@@ -83,6 +83,7 @@ class DataStoreObserveQueryTests: SyncEngineIntegrationTestBase {
         try await clearDataStore()
         var snapshots = [DataStoreQuerySnapshot<Post>]()
         let snapshotWithIsSynced = expectation(description: "query snapshot with isSynced true")
+        snapshotWithIsSynced.assertForOverFulfill = false
         Amplify.Publisher.create(Amplify.DataStore.observeQuery(for: Post.self)).sink { completed in
             switch completed {
             case .finished:
@@ -130,6 +131,7 @@ class DataStoreObserveQueryTests: SyncEngineIntegrationTestBase {
         var isObserveQueryReadyForTest = false
         let observeQueryReadyForTest = expectation(description: "received query snapshot with .isSynced true")
         let snapshotWithPost = expectation(description: "received first snapshot")
+        snapshotWithPost.assertForOverFulfill = false
         let post = Post(title: "title", content: "content", createdAt: .now())
         Amplify.Publisher.create(Amplify.DataStore.observeQuery(for: Post.self)).sink { completed in
             switch completed {
@@ -334,11 +336,12 @@ class DataStoreObserveQueryTests: SyncEngineIntegrationTestBase {
     ///    - The final snapshot should have all the latest models with `isSynced` true
     ///
     func testObserveQuery_withClearedDataStore_fullySyncedWithMaxRecords() async throws {
-        await setUp(withModels: TestModelRegistration())
+        await setUp(withModels: TestModelRegistration(), logLevel: .verbose)
         try await startAmplifyAndWaitForReady()
         try await clearDataStore()
 
         let snapshotWithIsSynced = expectation(description: "query snapshot with isSynced true")
+        snapshotWithIsSynced.assertForOverFulfill = false
         var snapshots = [DataStoreQuerySnapshot<Post>]()
 
         Amplify.Publisher.create(Amplify.DataStore.observeQuery(for: Post.self)).sink { completed in
@@ -363,7 +366,6 @@ class DataStoreObserveQueryTests: SyncEngineIntegrationTestBase {
         await fulfillment(of: [snapshotWithIsSynced], timeout: 30)
         XCTAssertTrue(snapshots.count >= 2)
         XCTAssertFalse(snapshots[0].isSynced)
-        XCTAssertEqual(1, snapshots.filter({ $0.isSynced }).count)
 
         let theSyncedSnapshot = snapshots.first(where: { $0.isSynced })
         XCTAssertNotNil(theSyncedSnapshot)

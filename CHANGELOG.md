@@ -1,5 +1,290 @@
 # Changelog
 
+## 2.44.0 (2024-10-31)
+
+### Features
+
+- **auth**: adding support for email mfa (#3862)
+
+## 2.43.0 (2024-10-22)
+
+### Features
+
+- adding vision os preview  (#3898)
+
+## 2.42.2 (2024-10-18)
+
+### Bug Fixes
+
+- **Logging**: adding internal configure auth hub event listener to fix logging race condition (#3899)
+- **auth**: return configuration error upon invalid redirect URI in hosted ui (#3889)
+
+## 2.42.1 (2024-09-24)
+
+### Bug Fixes
+
+- **predictions**: region handling for creating correct streaming endpoint from region (#3880)
+
+## 2.42.0 (2024-09-23)
+
+### Features
+
+- **api**: add support for GraphQL filter attributeExists  (#3838)
+
+## 2.41.2 (2024-09-20)
+
+### Bug Fixes
+
+- **api**: append auth info as head fields for appSync realtime handshake request
+
+## 2.41.1 (2024-09-19)
+
+### Bug Fixes
+
+- **Storage**: Removing testable import on UploadPartInput extension (#3878)
+
+## 2.41.0 (2024-09-18)
+
+### Features
+
+- **Core**: Updating to AWS SDK for Swift 1.0.0 (#3858)
+
+## 2.40.0 (2024-09-17)
+
+### Features
+
+- **Storage**: Implementing support for multiple buckets (#3839)
+
+## 2.39.1 (2024-09-16)
+
+### Bug Fixes
+
+- **analytics**: iterate sqlite rows with failableNext (#3857)
+
+## 2.39.0 (2024-08-28)
+
+### Features
+
+- Add AppSync components  (#3825)
+
+### Bug Fixes
+
+- **auth**: clear credentials values only if namespacing has changed (#3827)
+- **api**: storing cancelablles with actor methods in AppSyncRTC (#3824)
+
+## 2.38.0 (2024-08-19)
+
+### Features
+
+- **predictions**: add web socket retry for clock skew (#3816)
+
+## 2.37.0 (2024-08-12)
+
+### Features
+
+- **api**: propagate connectionLost error from websocket client to sync engine (#3800)
+
+## 2.36.0 (2024-07-18)
+
+### Features
+
+- **Storage**: Adding subpath strategy to the List operation (#3775)
+
+## 2.35.7 (2024-07-16)
+
+### Bug Fixes
+
+- **core**: update privacy info (#3777)
+
+## 2.35.6 (2024-07-16)
+
+### Bug Fixes
+
+- **data**: Gen2 hasOne associatedFields compile issue (#3700)
+
+## 2.35.5 (2024-07-08)
+
+### Bug Fixes
+
+- **Auth**: Throw error if hosted UI is not presented during sign out (#3769)
+
+## 2.35.4 (2024-06-25)
+
+### Bug Fixes
+
+- **Auth**: Resolve AuthZ state correctly when in error state (#3762)
+- **core**: remove InternalAmplifyCredentials from products (#3750)
+
+## 2.35.3 (2024-06-13)
+
+### Bug Fixes
+
+- **Auth**: Adding credentialsProvider to Cognito clients (#3745)
+
+## 2.35.2 (2024-06-10)
+
+### Bug Fixes
+
+- resolve strict concurrency errors (#3731)
+
+## 2.35.1 (2024-06-04)
+
+### Bug Fixes
+
+- **datastore**: reconnect the AppSyncRealTimeClient once connection is stale (#3734)
+
+## 2.35.0 (2024-06-04)
+
+### Features
+
+- **datastore**: refactor datastore category to use APICategoryGraphQLBehavior (#3666)
+
+### Bug Fixes
+
+- **ci**: update unstable release file path in CI scripts (#3737)
+
+## 2.34.4 (2024-06-03)
+
+## 2.34.3 (2024-05-30)
+
+### Bug Fixes
+
+- **logging**: logLevel `.none` should not produce logs (#3728)
+
+## 2.34.2 (2024-05-28)
+
+### Bug Fixes
+
+- **datastore**: change OutgoingMutationQueue use TaskQueue for state transitions (#3720)
+
+## 2.34.1 (2024-05-22)
+
+### Bug Fixes
+
+- **Auth**: Fix Hosted UI continuation error (#3715)
+
+## 2.34.0 (2024-05-22)
+
+### Features
+
+- Updating SQLite.swift to 0.15.3 (#3655)
+
+### Bug Fixes
+
+- **API**: pass authMode used for lazy loading functionality (#3690)
+
+## 2.33.6 (2024-05-15)
+
+## 2.33.5 (2024-05-14)
+
+### Bug Fixes
+
+- **predictions**: update liveness websocket send event to be synchronous (#3693)
+
+## 2.33.4 (2024-05-08)
+
+### Bug Fixes
+
+- **auth**: configure with standardAttributes snake case values (#3686)
+- **datastore**: memory leak in ModelSyncedEventEmitter (#3675)
+
+## 2.33.3 (2024-05-03)
+
+### Bug Fixes
+
+- **auth**: Using a custom Foundation-based HTTPClient for HTTP Requests (#3582)
+
+## 2.33.2 (2024-05-02)
+
+### Bug Fixes
+
+- **Auth**: Add keychain logging for better debugging (#3669)
+- **core**: potential memory leak in WebSocketClient (#3624)
+
+## 2.33.1 (2024-05-01)
+
+### Bug Fixes
+
+- **auth**: gen2 config oauth domain (#3663)
+
+## 2.33.0 (2024-05-01)
+
+### Features
+
+- Updating to SQLite.swift 0.15.0 (#3659)
+
+## 2.32.1 (2024-04-30)
+
+### Bug Fixes
+
+- **Auth**: Refactoring state machine logic to fix memory leak (#3613)
+
+## 2.32.0 (2024-04-29)
+
+### Features
+
+- **storage**: update Storage APIs with StoragePath parameter
+- **Storage**: Adding integration tests for getURL, remove and list (#3584)
+- **Storage**: Refactor list objects API to include `path` (#3580)
+- **storage**: update storage upload APIs to use storage path (#3574)
+- **Storage**: Refactor GetURL API to include `path` (#3573)
+- **storage**: update storage download api (#3561)
+- **storage**: refactor storage remove api by including path (#3571)
+- **storage**: add new storage gen2 APIs (#3559)
+
+### Bug Fixes
+
+- **Auth**: Fixing the Gen2 json configuration used by the Authenticator (#3647)
+
+## 2.31.1 (2024-04-26)
+
+### Bug Fixes
+
+- **storage**: retrieve accesslevel before storage service (#3641)
+
+## 2.31.0 (2024-04-26)
+
+### Features
+
+- **api**: add authorizationMode to GraphQLRequest (#3630)
+
+## 2.30.0 (2024-04-26)
+
+### Features
+
+- **all**: Configure plugins with AmplifyOutputs (#3567)
+
+## 2.29.3 (2024-04-22)
+
+### Bug Fixes
+
+- **API**: make sure unsubscribe is invoked when subscription cancelled (#3619)
+
+## 2.29.2 (2024-04-17)
+
+### Bug Fixes
+
+- **api**: AWSGraphQLSubscriptionTaskRunner failing to cancel AppSyncRealTimeSubscription (#3615)
+- **Core**: TaskQueue async execution (#3611)
+
+## 2.29.1 (2024-04-10)
+
+### Bug Fixes
+
+- **api**: add collection type casting in swift 5.7 (#3602)
+- **Auth**: throw correct error for an unknown session error (#3591)
+- **DataStore**: Fixing a crash when attempting to create a model with a predicate. (#3600)
+
+## 2.29.0 (2024-04-03)
+
+### Features
+
+- **API**: implement AppSyncRealTimeClient and WebSocketClient with URLSession (#3575)
+
+### Bug Fixes
+
+- **api**: add user-agent header to appsync websocket handshake request (#3586)
+
 ## 2.28.0 (2024-03-21)
 
 ### Features

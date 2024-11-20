@@ -25,7 +25,6 @@ class AWSAuthSignUpTask: AuthSignUpTask, DefaultLogger {
     }
 
     func execute() async throws -> AuthSignUpResult {
-        log.verbose("Starting execution")
         let userPoolEnvironment = authEnvironment.userPoolEnvironment
         try request.hasError()
 
@@ -41,7 +40,7 @@ class AWSAuthSignUpTask: AuthSignUpTask, DefaultLogger {
                 into: [String: String]()) {
                     $0[$1.key.rawValue] = $1.value
                 } ?? [:]
-            let input = SignUpInput(username: request.username,
+            let input = await SignUpInput(username: request.username,
                                     password: request.password!,
                                     clientMetadata: metaData,
                                     validationData: validationData,
