@@ -18637,6 +18637,220 @@
         ]
       },
       {
+        "kind": "TypeDecl",
+        "name": "AccessGroup",
+        "printedName": "AccessGroup",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "name",
+            "printedName": "name",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:7Amplify11AccessGroupV4nameSSSgvp",
+            "mangledName": "$s7Amplify11AccessGroupV4nameSSSgvp",
+            "moduleName": "Amplify",
+            "declAttributes": [
+              "HasStorage"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:7Amplify11AccessGroupV4nameSSSgvg",
+                "mangledName": "$s7Amplify11AccessGroupV4nameSSSgvg",
+                "moduleName": "Amplify",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "migrateKeychainItems",
+            "printedName": "migrateKeychainItems",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:7Amplify11AccessGroupV20migrateKeychainItemsSbvp",
+            "mangledName": "$s7Amplify11AccessGroupV20migrateKeychainItemsSbvp",
+            "moduleName": "Amplify",
+            "declAttributes": [
+              "HasStorage"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:7Amplify11AccessGroupV20migrateKeychainItemsSbvg",
+                "mangledName": "$s7Amplify11AccessGroupV20migrateKeychainItemsSbvg",
+                "moduleName": "Amplify",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(name:migrateKeychainItemsOfUserSession:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "AccessGroup",
+                "printedName": "Amplify.AccessGroup",
+                "usr": "s:7Amplify11AccessGroupV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "hasDefaultArg": true,
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:7Amplify11AccessGroupV4name33migrateKeychainItemsOfUserSessionACSS_Sbtcfc",
+            "mangledName": "$s7Amplify11AccessGroupV4name33migrateKeychainItemsOfUserSessionACSS_Sbtcfc",
+            "moduleName": "Amplify",
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Function",
+            "name": "none",
+            "printedName": "none(migrateKeychainItemsOfUserSession:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "AccessGroup",
+                "printedName": "Amplify.AccessGroup",
+                "usr": "s:7Amplify11AccessGroupV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:7Amplify11AccessGroupV4none33migrateKeychainItemsOfUserSessionACSb_tFZ",
+            "mangledName": "$s7Amplify11AccessGroupV4none33migrateKeychainItemsOfUserSessionACSb_tFZ",
+            "moduleName": "Amplify",
+            "static": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Var",
+            "name": "none",
+            "printedName": "none",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "AccessGroup",
+                "printedName": "Amplify.AccessGroup",
+                "usr": "s:7Amplify11AccessGroupV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:7Amplify11AccessGroupV4noneACvpZ",
+            "mangledName": "$s7Amplify11AccessGroupV4noneACvpZ",
+            "moduleName": "Amplify",
+            "static": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "AccessGroup",
+                    "printedName": "Amplify.AccessGroup",
+                    "usr": "s:7Amplify11AccessGroupV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:7Amplify11AccessGroupV4noneACvgZ",
+                "mangledName": "$s7Amplify11AccessGroupV4noneACvgZ",
+                "moduleName": "Amplify",
+                "static": true,
+                "accessorKind": "get"
+              }
+            ]
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:7Amplify11AccessGroupV",
+        "mangledName": "$s7Amplify11AccessGroupV",
+        "moduleName": "Amplify"
+      },
+      {
         "kind": "TypeAlias",
         "name": "AdditionalInfo",
         "printedName": "AdditionalInfo",
@@ -138553,84 +138767,6 @@
               },
               {
                 "kind": "Var",
-                "name": "bucket",
-                "printedName": "bucket",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Optional",
-                    "printedName": "(any Amplify.StorageBucket)?",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Paren",
-                        "printedName": "(any Amplify.StorageBucket)",
-                        "children": [
-                          {
-                            "kind": "TypeNominal",
-                            "name": "StorageBucket",
-                            "printedName": "any Amplify.StorageBucket",
-                            "usr": "s:7Amplify13StorageBucketP"
-                          }
-                        ],
-                        "usr": "s:7Amplify13StorageBucketP"
-                      }
-                    ],
-                    "usr": "s:Sq"
-                  }
-                ],
-                "declKind": "Var",
-                "usr": "s:7Amplify26StorageDownloadDataRequestV7OptionsV6bucketAA0B6Bucket_pSgvp",
-                "mangledName": "$s7Amplify26StorageDownloadDataRequestV7OptionsV6bucketAA0B6Bucket_pSgvp",
-                "moduleName": "Amplify",
-                "declAttributes": [
-                  "HasStorage"
-                ],
-                "isLet": true,
-                "hasStorage": true,
-                "accessors": [
-                  {
-                    "kind": "Accessor",
-                    "name": "Get",
-                    "printedName": "Get()",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Optional",
-                        "printedName": "(any Amplify.StorageBucket)?",
-                        "children": [
-                          {
-                            "kind": "TypeNominal",
-                            "name": "Paren",
-                            "printedName": "(any Amplify.StorageBucket)",
-                            "children": [
-                              {
-                                "kind": "TypeNominal",
-                                "name": "StorageBucket",
-                                "printedName": "any Amplify.StorageBucket",
-                                "usr": "s:7Amplify13StorageBucketP"
-                              }
-                            ],
-                            "usr": "s:7Amplify13StorageBucketP"
-                          }
-                        ],
-                        "usr": "s:Sq"
-                      }
-                    ],
-                    "declKind": "Accessor",
-                    "usr": "s:7Amplify26StorageDownloadDataRequestV7OptionsV6bucketAA0B6Bucket_pSgvg",
-                    "mangledName": "$s7Amplify26StorageDownloadDataRequestV7OptionsV6bucketAA0B6Bucket_pSgvg",
-                    "moduleName": "Amplify",
-                    "implicit": true,
-                    "declAttributes": [
-                      "Transparent"
-                    ],
-                    "accessorKind": "get"
-                  }
-                ]
-              },
-              {
-                "kind": "Var",
                 "name": "pluginOptions",
                 "printedName": "pluginOptions",
                 "children": [
@@ -138776,43 +138912,6 @@
                 "declKind": "Constructor",
                 "usr": "s:7Amplify26StorageDownloadDataRequestV7OptionsV06pluginF0AEypSg_tcfc",
                 "mangledName": "$s7Amplify26StorageDownloadDataRequestV7OptionsV06pluginF0AEypSg_tcfc",
-                "moduleName": "Amplify",
-                "init_kind": "Designated"
-              },
-              {
-                "kind": "Constructor",
-                "name": "init",
-                "printedName": "init(bucket:pluginOptions:)",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Options",
-                    "printedName": "Amplify.StorageDownloadDataRequest.Options",
-                    "usr": "s:7Amplify26StorageDownloadDataRequestV7OptionsV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "GenericTypeParam",
-                    "printedName": "some Amplify.StorageBucket"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Optional",
-                    "printedName": "Any?",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "ProtocolComposition",
-                        "printedName": "Any"
-                      }
-                    ],
-                    "hasDefaultArg": true,
-                    "usr": "s:Sq"
-                  }
-                ],
-                "declKind": "Constructor",
-                "usr": "s:7Amplify26StorageDownloadDataRequestV7OptionsV6bucket06pluginF0AEx_ypSgtcAA0B6BucketRzlufc",
-                "mangledName": "$s7Amplify26StorageDownloadDataRequestV7OptionsV6bucket06pluginF0AEx_ypSgtcAA0B6BucketRzlufc",
                 "moduleName": "Amplify",
                 "init_kind": "Designated"
               }
@@ -139271,84 +139370,6 @@
               },
               {
                 "kind": "Var",
-                "name": "bucket",
-                "printedName": "bucket",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Optional",
-                    "printedName": "(any Amplify.StorageBucket)?",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Paren",
-                        "printedName": "(any Amplify.StorageBucket)",
-                        "children": [
-                          {
-                            "kind": "TypeNominal",
-                            "name": "StorageBucket",
-                            "printedName": "any Amplify.StorageBucket",
-                            "usr": "s:7Amplify13StorageBucketP"
-                          }
-                        ],
-                        "usr": "s:7Amplify13StorageBucketP"
-                      }
-                    ],
-                    "usr": "s:Sq"
-                  }
-                ],
-                "declKind": "Var",
-                "usr": "s:7Amplify26StorageDownloadFileRequestV7OptionsV6bucketAA0B6Bucket_pSgvp",
-                "mangledName": "$s7Amplify26StorageDownloadFileRequestV7OptionsV6bucketAA0B6Bucket_pSgvp",
-                "moduleName": "Amplify",
-                "declAttributes": [
-                  "HasStorage"
-                ],
-                "isLet": true,
-                "hasStorage": true,
-                "accessors": [
-                  {
-                    "kind": "Accessor",
-                    "name": "Get",
-                    "printedName": "Get()",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Optional",
-                        "printedName": "(any Amplify.StorageBucket)?",
-                        "children": [
-                          {
-                            "kind": "TypeNominal",
-                            "name": "Paren",
-                            "printedName": "(any Amplify.StorageBucket)",
-                            "children": [
-                              {
-                                "kind": "TypeNominal",
-                                "name": "StorageBucket",
-                                "printedName": "any Amplify.StorageBucket",
-                                "usr": "s:7Amplify13StorageBucketP"
-                              }
-                            ],
-                            "usr": "s:7Amplify13StorageBucketP"
-                          }
-                        ],
-                        "usr": "s:Sq"
-                      }
-                    ],
-                    "declKind": "Accessor",
-                    "usr": "s:7Amplify26StorageDownloadFileRequestV7OptionsV6bucketAA0B6Bucket_pSgvg",
-                    "mangledName": "$s7Amplify26StorageDownloadFileRequestV7OptionsV6bucketAA0B6Bucket_pSgvg",
-                    "moduleName": "Amplify",
-                    "implicit": true,
-                    "declAttributes": [
-                      "Transparent"
-                    ],
-                    "accessorKind": "get"
-                  }
-                ]
-              },
-              {
-                "kind": "Var",
                 "name": "pluginOptions",
                 "printedName": "pluginOptions",
                 "children": [
@@ -139495,43 +139516,10 @@
                 "usr": "s:7Amplify26StorageDownloadFileRequestV7OptionsV06pluginF0AEypSg_tcfc",
                 "mangledName": "$s7Amplify26StorageDownloadFileRequestV7OptionsV06pluginF0AEypSg_tcfc",
                 "moduleName": "Amplify",
-                "init_kind": "Designated"
-              },
-              {
-                "kind": "Constructor",
-                "name": "init",
-                "printedName": "init(bucket:pluginOptions:)",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Options",
-                    "printedName": "Amplify.StorageDownloadFileRequest.Options",
-                    "usr": "s:7Amplify26StorageDownloadFileRequestV7OptionsV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "GenericTypeParam",
-                    "printedName": "some Amplify.StorageBucket"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Optional",
-                    "printedName": "Any?",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "ProtocolComposition",
-                        "printedName": "Any"
-                      }
-                    ],
-                    "hasDefaultArg": true,
-                    "usr": "s:Sq"
-                  }
+                "deprecated": true,
+                "declAttributes": [
+                  "Available"
                 ],
-                "declKind": "Constructor",
-                "usr": "s:7Amplify26StorageDownloadFileRequestV7OptionsV6bucket06pluginF0AEx_ypSgtcAA0B6BucketRzlufc",
-                "mangledName": "$s7Amplify26StorageDownloadFileRequestV7OptionsV6bucket06pluginF0AEx_ypSgtcAA0B6BucketRzlufc",
-                "moduleName": "Amplify",
                 "init_kind": "Designated"
               }
             ],
@@ -140026,84 +140014,6 @@
               },
               {
                 "kind": "Var",
-                "name": "bucket",
-                "printedName": "bucket",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Optional",
-                    "printedName": "(any Amplify.StorageBucket)?",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Paren",
-                        "printedName": "(any Amplify.StorageBucket)",
-                        "children": [
-                          {
-                            "kind": "TypeNominal",
-                            "name": "StorageBucket",
-                            "printedName": "any Amplify.StorageBucket",
-                            "usr": "s:7Amplify13StorageBucketP"
-                          }
-                        ],
-                        "usr": "s:7Amplify13StorageBucketP"
-                      }
-                    ],
-                    "usr": "s:Sq"
-                  }
-                ],
-                "declKind": "Var",
-                "usr": "s:7Amplify20StorageGetURLRequestV7OptionsV6bucketAA0B6Bucket_pSgvp",
-                "mangledName": "$s7Amplify20StorageGetURLRequestV7OptionsV6bucketAA0B6Bucket_pSgvp",
-                "moduleName": "Amplify",
-                "declAttributes": [
-                  "HasStorage"
-                ],
-                "isLet": true,
-                "hasStorage": true,
-                "accessors": [
-                  {
-                    "kind": "Accessor",
-                    "name": "Get",
-                    "printedName": "Get()",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Optional",
-                        "printedName": "(any Amplify.StorageBucket)?",
-                        "children": [
-                          {
-                            "kind": "TypeNominal",
-                            "name": "Paren",
-                            "printedName": "(any Amplify.StorageBucket)",
-                            "children": [
-                              {
-                                "kind": "TypeNominal",
-                                "name": "StorageBucket",
-                                "printedName": "any Amplify.StorageBucket",
-                                "usr": "s:7Amplify13StorageBucketP"
-                              }
-                            ],
-                            "usr": "s:7Amplify13StorageBucketP"
-                          }
-                        ],
-                        "usr": "s:Sq"
-                      }
-                    ],
-                    "declKind": "Accessor",
-                    "usr": "s:7Amplify20StorageGetURLRequestV7OptionsV6bucketAA0B6Bucket_pSgvg",
-                    "mangledName": "$s7Amplify20StorageGetURLRequestV7OptionsV6bucketAA0B6Bucket_pSgvg",
-                    "moduleName": "Amplify",
-                    "implicit": true,
-                    "declAttributes": [
-                      "Transparent"
-                    ],
-                    "accessorKind": "get"
-                  }
-                ]
-              },
-              {
-                "kind": "Var",
                 "name": "pluginOptions",
                 "printedName": "pluginOptions",
                 "children": [
@@ -140263,50 +140173,6 @@
                 "declKind": "Constructor",
                 "usr": "s:7Amplify20StorageGetURLRequestV7OptionsV7expires06pluginE0AESi_ypSgtcfc",
                 "mangledName": "$s7Amplify20StorageGetURLRequestV7OptionsV7expires06pluginE0AESi_ypSgtcfc",
-                "moduleName": "Amplify",
-                "init_kind": "Designated"
-              },
-              {
-                "kind": "Constructor",
-                "name": "init",
-                "printedName": "init(expires:bucket:pluginOptions:)",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Options",
-                    "printedName": "Amplify.StorageGetURLRequest.Options",
-                    "usr": "s:7Amplify20StorageGetURLRequestV7OptionsV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Int",
-                    "printedName": "Swift.Int",
-                    "hasDefaultArg": true,
-                    "usr": "s:Si"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "GenericTypeParam",
-                    "printedName": "some Amplify.StorageBucket"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Optional",
-                    "printedName": "Any?",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "ProtocolComposition",
-                        "printedName": "Any"
-                      }
-                    ],
-                    "hasDefaultArg": true,
-                    "usr": "s:Sq"
-                  }
-                ],
-                "declKind": "Constructor",
-                "usr": "s:7Amplify20StorageGetURLRequestV7OptionsV7expires6bucket06pluginE0AESi_xypSgtcAA0B6BucketRzlufc",
-                "mangledName": "$s7Amplify20StorageGetURLRequestV7OptionsV7expires6bucket06pluginE0AESi_xypSgtcAA0B6BucketRzlufc",
                 "moduleName": "Amplify",
                 "init_kind": "Designated"
               }
@@ -140809,84 +140675,6 @@
               },
               {
                 "kind": "Var",
-                "name": "bucket",
-                "printedName": "bucket",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Optional",
-                    "printedName": "(any Amplify.StorageBucket)?",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Paren",
-                        "printedName": "(any Amplify.StorageBucket)",
-                        "children": [
-                          {
-                            "kind": "TypeNominal",
-                            "name": "StorageBucket",
-                            "printedName": "any Amplify.StorageBucket",
-                            "usr": "s:7Amplify13StorageBucketP"
-                          }
-                        ],
-                        "usr": "s:7Amplify13StorageBucketP"
-                      }
-                    ],
-                    "usr": "s:Sq"
-                  }
-                ],
-                "declKind": "Var",
-                "usr": "s:7Amplify18StorageListRequestV7OptionsV6bucketAA0B6Bucket_pSgvp",
-                "mangledName": "$s7Amplify18StorageListRequestV7OptionsV6bucketAA0B6Bucket_pSgvp",
-                "moduleName": "Amplify",
-                "declAttributes": [
-                  "HasStorage"
-                ],
-                "isLet": true,
-                "hasStorage": true,
-                "accessors": [
-                  {
-                    "kind": "Accessor",
-                    "name": "Get",
-                    "printedName": "Get()",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Optional",
-                        "printedName": "(any Amplify.StorageBucket)?",
-                        "children": [
-                          {
-                            "kind": "TypeNominal",
-                            "name": "Paren",
-                            "printedName": "(any Amplify.StorageBucket)",
-                            "children": [
-                              {
-                                "kind": "TypeNominal",
-                                "name": "StorageBucket",
-                                "printedName": "any Amplify.StorageBucket",
-                                "usr": "s:7Amplify13StorageBucketP"
-                              }
-                            ],
-                            "usr": "s:7Amplify13StorageBucketP"
-                          }
-                        ],
-                        "usr": "s:Sq"
-                      }
-                    ],
-                    "declKind": "Accessor",
-                    "usr": "s:7Amplify18StorageListRequestV7OptionsV6bucketAA0B6Bucket_pSgvg",
-                    "mangledName": "$s7Amplify18StorageListRequestV7OptionsV6bucketAA0B6Bucket_pSgvg",
-                    "moduleName": "Amplify",
-                    "implicit": true,
-                    "declAttributes": [
-                      "Transparent"
-                    ],
-                    "accessorKind": "get"
-                  }
-                ]
-              },
-              {
-                "kind": "Var",
                 "name": "nextToken",
                 "printedName": "nextToken",
                 "children": [
@@ -141102,72 +140890,6 @@
                 "declKind": "Constructor",
                 "usr": "s:7Amplify18StorageListRequestV7OptionsV11accessLevel16targetIdentityId4path15subpathStrategy8pageSize9nextToken06pluginE0AeA0b6AccessG0O_SSSgAoE07SubpathM0OSuAOypSgtcfc",
                 "mangledName": "$s7Amplify18StorageListRequestV7OptionsV11accessLevel16targetIdentityId4path15subpathStrategy8pageSize9nextToken06pluginE0AeA0b6AccessG0O_SSSgAoE07SubpathM0OSuAOypSgtcfc",
-                "moduleName": "Amplify",
-                "init_kind": "Designated"
-              },
-              {
-                "kind": "Constructor",
-                "name": "init",
-                "printedName": "init(subpathStrategy:pageSize:bucket:nextToken:pluginOptions:)",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Options",
-                    "printedName": "Amplify.StorageListRequest.Options",
-                    "usr": "s:7Amplify18StorageListRequestV7OptionsV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "SubpathStrategy",
-                    "printedName": "Amplify.StorageListRequest.Options.SubpathStrategy",
-                    "hasDefaultArg": true,
-                    "usr": "s:7Amplify18StorageListRequestV7OptionsV15SubpathStrategyO"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "UInt",
-                    "printedName": "Swift.UInt",
-                    "hasDefaultArg": true,
-                    "usr": "s:Su"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "GenericTypeParam",
-                    "printedName": "some Amplify.StorageBucket"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Optional",
-                    "printedName": "Swift.String?",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "String",
-                        "printedName": "Swift.String",
-                        "usr": "s:SS"
-                      }
-                    ],
-                    "hasDefaultArg": true,
-                    "usr": "s:Sq"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Optional",
-                    "printedName": "Any?",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "ProtocolComposition",
-                        "printedName": "Any"
-                      }
-                    ],
-                    "hasDefaultArg": true,
-                    "usr": "s:Sq"
-                  }
-                ],
-                "declKind": "Constructor",
-                "usr": "s:7Amplify18StorageListRequestV7OptionsV15subpathStrategy8pageSize6bucket9nextToken06pluginE0A2E07SubpathG0O_SuxSSSgypSgtcAA0B6BucketRzlufc",
-                "mangledName": "$s7Amplify18StorageListRequestV7OptionsV15subpathStrategy8pageSize6bucket9nextToken06pluginE0A2E07SubpathG0O_SuxSSSgypSgtcAA0B6BucketRzlufc",
                 "moduleName": "Amplify",
                 "init_kind": "Designated"
               },
@@ -141664,84 +141386,6 @@
               },
               {
                 "kind": "Var",
-                "name": "bucket",
-                "printedName": "bucket",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Optional",
-                    "printedName": "(any Amplify.StorageBucket)?",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Paren",
-                        "printedName": "(any Amplify.StorageBucket)",
-                        "children": [
-                          {
-                            "kind": "TypeNominal",
-                            "name": "StorageBucket",
-                            "printedName": "any Amplify.StorageBucket",
-                            "usr": "s:7Amplify13StorageBucketP"
-                          }
-                        ],
-                        "usr": "s:7Amplify13StorageBucketP"
-                      }
-                    ],
-                    "usr": "s:Sq"
-                  }
-                ],
-                "declKind": "Var",
-                "usr": "s:7Amplify20StorageRemoveRequestV7OptionsV6bucketAA0B6Bucket_pSgvp",
-                "mangledName": "$s7Amplify20StorageRemoveRequestV7OptionsV6bucketAA0B6Bucket_pSgvp",
-                "moduleName": "Amplify",
-                "declAttributes": [
-                  "HasStorage"
-                ],
-                "isLet": true,
-                "hasStorage": true,
-                "accessors": [
-                  {
-                    "kind": "Accessor",
-                    "name": "Get",
-                    "printedName": "Get()",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Optional",
-                        "printedName": "(any Amplify.StorageBucket)?",
-                        "children": [
-                          {
-                            "kind": "TypeNominal",
-                            "name": "Paren",
-                            "printedName": "(any Amplify.StorageBucket)",
-                            "children": [
-                              {
-                                "kind": "TypeNominal",
-                                "name": "StorageBucket",
-                                "printedName": "any Amplify.StorageBucket",
-                                "usr": "s:7Amplify13StorageBucketP"
-                              }
-                            ],
-                            "usr": "s:7Amplify13StorageBucketP"
-                          }
-                        ],
-                        "usr": "s:Sq"
-                      }
-                    ],
-                    "declKind": "Accessor",
-                    "usr": "s:7Amplify20StorageRemoveRequestV7OptionsV6bucketAA0B6Bucket_pSgvg",
-                    "mangledName": "$s7Amplify20StorageRemoveRequestV7OptionsV6bucketAA0B6Bucket_pSgvg",
-                    "moduleName": "Amplify",
-                    "implicit": true,
-                    "declAttributes": [
-                      "Transparent"
-                    ],
-                    "accessorKind": "get"
-                  }
-                ]
-              },
-              {
-                "kind": "Var",
                 "name": "pluginOptions",
                 "printedName": "pluginOptions",
                 "children": [
@@ -141836,43 +141480,6 @@
                 "declKind": "Constructor",
                 "usr": "s:7Amplify20StorageRemoveRequestV7OptionsV11accessLevel06pluginE0AeA0b6AccessG0O_ypSgtcfc",
                 "mangledName": "$s7Amplify20StorageRemoveRequestV7OptionsV11accessLevel06pluginE0AeA0b6AccessG0O_ypSgtcfc",
-                "moduleName": "Amplify",
-                "init_kind": "Designated"
-              },
-              {
-                "kind": "Constructor",
-                "name": "init",
-                "printedName": "init(bucket:pluginOptions:)",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Options",
-                    "printedName": "Amplify.StorageRemoveRequest.Options",
-                    "usr": "s:7Amplify20StorageRemoveRequestV7OptionsV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "GenericTypeParam",
-                    "printedName": "some Amplify.StorageBucket"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Optional",
-                    "printedName": "Any?",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "ProtocolComposition",
-                        "printedName": "Any"
-                      }
-                    ],
-                    "hasDefaultArg": true,
-                    "usr": "s:Sq"
-                  }
-                ],
-                "declKind": "Constructor",
-                "usr": "s:7Amplify20StorageRemoveRequestV7OptionsV6bucket06pluginE0AEx_ypSgtcAA0B6BucketRzlufc",
-                "mangledName": "$s7Amplify20StorageRemoveRequestV7OptionsV6bucket06pluginE0AEx_ypSgtcAA0B6BucketRzlufc",
                 "moduleName": "Amplify",
                 "init_kind": "Designated"
               }
@@ -142421,84 +142028,6 @@
               },
               {
                 "kind": "Var",
-                "name": "bucket",
-                "printedName": "bucket",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Optional",
-                    "printedName": "(any Amplify.StorageBucket)?",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Paren",
-                        "printedName": "(any Amplify.StorageBucket)",
-                        "children": [
-                          {
-                            "kind": "TypeNominal",
-                            "name": "StorageBucket",
-                            "printedName": "any Amplify.StorageBucket",
-                            "usr": "s:7Amplify13StorageBucketP"
-                          }
-                        ],
-                        "usr": "s:7Amplify13StorageBucketP"
-                      }
-                    ],
-                    "usr": "s:Sq"
-                  }
-                ],
-                "declKind": "Var",
-                "usr": "s:7Amplify24StorageUploadDataRequestV7OptionsV6bucketAA0B6Bucket_pSgvp",
-                "mangledName": "$s7Amplify24StorageUploadDataRequestV7OptionsV6bucketAA0B6Bucket_pSgvp",
-                "moduleName": "Amplify",
-                "declAttributes": [
-                  "HasStorage"
-                ],
-                "isLet": true,
-                "hasStorage": true,
-                "accessors": [
-                  {
-                    "kind": "Accessor",
-                    "name": "Get",
-                    "printedName": "Get()",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Optional",
-                        "printedName": "(any Amplify.StorageBucket)?",
-                        "children": [
-                          {
-                            "kind": "TypeNominal",
-                            "name": "Paren",
-                            "printedName": "(any Amplify.StorageBucket)",
-                            "children": [
-                              {
-                                "kind": "TypeNominal",
-                                "name": "StorageBucket",
-                                "printedName": "any Amplify.StorageBucket",
-                                "usr": "s:7Amplify13StorageBucketP"
-                              }
-                            ],
-                            "usr": "s:7Amplify13StorageBucketP"
-                          }
-                        ],
-                        "usr": "s:Sq"
-                      }
-                    ],
-                    "declKind": "Accessor",
-                    "usr": "s:7Amplify24StorageUploadDataRequestV7OptionsV6bucketAA0B6Bucket_pSgvg",
-                    "mangledName": "$s7Amplify24StorageUploadDataRequestV7OptionsV6bucketAA0B6Bucket_pSgvg",
-                    "moduleName": "Amplify",
-                    "implicit": true,
-                    "declAttributes": [
-                      "Transparent"
-                    ],
-                    "accessorKind": "get"
-                  }
-                ]
-              },
-              {
-                "kind": "Var",
                 "name": "contentType",
                 "printedName": "contentType",
                 "children": [
@@ -142794,87 +142323,6 @@
                 "declKind": "Constructor",
                 "usr": "s:7Amplify24StorageUploadDataRequestV7OptionsV8metadata11contentType06pluginF0AESDyS2SGSg_SSSgypSgtcfc",
                 "mangledName": "$s7Amplify24StorageUploadDataRequestV7OptionsV8metadata11contentType06pluginF0AESDyS2SGSg_SSSgypSgtcfc",
-                "moduleName": "Amplify",
-                "init_kind": "Designated"
-              },
-              {
-                "kind": "Constructor",
-                "name": "init",
-                "printedName": "init(metadata:bucket:contentType:pluginOptions:)",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Options",
-                    "printedName": "Amplify.StorageUploadDataRequest.Options",
-                    "usr": "s:7Amplify24StorageUploadDataRequestV7OptionsV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Optional",
-                    "printedName": "[Swift.String : Swift.String]?",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Dictionary",
-                        "printedName": "[Swift.String : Swift.String]",
-                        "children": [
-                          {
-                            "kind": "TypeNominal",
-                            "name": "String",
-                            "printedName": "Swift.String",
-                            "usr": "s:SS"
-                          },
-                          {
-                            "kind": "TypeNominal",
-                            "name": "String",
-                            "printedName": "Swift.String",
-                            "usr": "s:SS"
-                          }
-                        ],
-                        "usr": "s:SD"
-                      }
-                    ],
-                    "hasDefaultArg": true,
-                    "usr": "s:Sq"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "GenericTypeParam",
-                    "printedName": "some Amplify.StorageBucket"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Optional",
-                    "printedName": "Swift.String?",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "String",
-                        "printedName": "Swift.String",
-                        "usr": "s:SS"
-                      }
-                    ],
-                    "hasDefaultArg": true,
-                    "usr": "s:Sq"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Optional",
-                    "printedName": "Any?",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "ProtocolComposition",
-                        "printedName": "Any"
-                      }
-                    ],
-                    "hasDefaultArg": true,
-                    "usr": "s:Sq"
-                  }
-                ],
-                "declKind": "Constructor",
-                "usr": "s:7Amplify24StorageUploadDataRequestV7OptionsV8metadata6bucket11contentType06pluginF0AESDyS2SGSg_xSSSgypSgtcAA0B6BucketRzlufc",
-                "mangledName": "$s7Amplify24StorageUploadDataRequestV7OptionsV8metadata6bucket11contentType06pluginF0AESDyS2SGSg_xSSSgypSgtcAA0B6BucketRzlufc",
                 "moduleName": "Amplify",
                 "init_kind": "Designated"
               }
@@ -143423,84 +142871,6 @@
               },
               {
                 "kind": "Var",
-                "name": "bucket",
-                "printedName": "bucket",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Optional",
-                    "printedName": "(any Amplify.StorageBucket)?",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Paren",
-                        "printedName": "(any Amplify.StorageBucket)",
-                        "children": [
-                          {
-                            "kind": "TypeNominal",
-                            "name": "StorageBucket",
-                            "printedName": "any Amplify.StorageBucket",
-                            "usr": "s:7Amplify13StorageBucketP"
-                          }
-                        ],
-                        "usr": "s:7Amplify13StorageBucketP"
-                      }
-                    ],
-                    "usr": "s:Sq"
-                  }
-                ],
-                "declKind": "Var",
-                "usr": "s:7Amplify24StorageUploadFileRequestV7OptionsV6bucketAA0B6Bucket_pSgvp",
-                "mangledName": "$s7Amplify24StorageUploadFileRequestV7OptionsV6bucketAA0B6Bucket_pSgvp",
-                "moduleName": "Amplify",
-                "declAttributes": [
-                  "HasStorage"
-                ],
-                "isLet": true,
-                "hasStorage": true,
-                "accessors": [
-                  {
-                    "kind": "Accessor",
-                    "name": "Get",
-                    "printedName": "Get()",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Optional",
-                        "printedName": "(any Amplify.StorageBucket)?",
-                        "children": [
-                          {
-                            "kind": "TypeNominal",
-                            "name": "Paren",
-                            "printedName": "(any Amplify.StorageBucket)",
-                            "children": [
-                              {
-                                "kind": "TypeNominal",
-                                "name": "StorageBucket",
-                                "printedName": "any Amplify.StorageBucket",
-                                "usr": "s:7Amplify13StorageBucketP"
-                              }
-                            ],
-                            "usr": "s:7Amplify13StorageBucketP"
-                          }
-                        ],
-                        "usr": "s:Sq"
-                      }
-                    ],
-                    "declKind": "Accessor",
-                    "usr": "s:7Amplify24StorageUploadFileRequestV7OptionsV6bucketAA0B6Bucket_pSgvg",
-                    "mangledName": "$s7Amplify24StorageUploadFileRequestV7OptionsV6bucketAA0B6Bucket_pSgvg",
-                    "moduleName": "Amplify",
-                    "implicit": true,
-                    "declAttributes": [
-                      "Transparent"
-                    ],
-                    "accessorKind": "get"
-                  }
-                ]
-              },
-              {
-                "kind": "Var",
                 "name": "contentType",
                 "printedName": "contentType",
                 "children": [
@@ -143796,87 +143166,6 @@
                 "declKind": "Constructor",
                 "usr": "s:7Amplify24StorageUploadFileRequestV7OptionsV8metadata11contentType06pluginF0AESDyS2SGSg_SSSgypSgtcfc",
                 "mangledName": "$s7Amplify24StorageUploadFileRequestV7OptionsV8metadata11contentType06pluginF0AESDyS2SGSg_SSSgypSgtcfc",
-                "moduleName": "Amplify",
-                "init_kind": "Designated"
-              },
-              {
-                "kind": "Constructor",
-                "name": "init",
-                "printedName": "init(metadata:bucket:contentType:pluginOptions:)",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Options",
-                    "printedName": "Amplify.StorageUploadFileRequest.Options",
-                    "usr": "s:7Amplify24StorageUploadFileRequestV7OptionsV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Optional",
-                    "printedName": "[Swift.String : Swift.String]?",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Dictionary",
-                        "printedName": "[Swift.String : Swift.String]",
-                        "children": [
-                          {
-                            "kind": "TypeNominal",
-                            "name": "String",
-                            "printedName": "Swift.String",
-                            "usr": "s:SS"
-                          },
-                          {
-                            "kind": "TypeNominal",
-                            "name": "String",
-                            "printedName": "Swift.String",
-                            "usr": "s:SS"
-                          }
-                        ],
-                        "usr": "s:SD"
-                      }
-                    ],
-                    "hasDefaultArg": true,
-                    "usr": "s:Sq"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "GenericTypeParam",
-                    "printedName": "some Amplify.StorageBucket"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Optional",
-                    "printedName": "Swift.String?",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "String",
-                        "printedName": "Swift.String",
-                        "usr": "s:SS"
-                      }
-                    ],
-                    "hasDefaultArg": true,
-                    "usr": "s:Sq"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Optional",
-                    "printedName": "Any?",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "ProtocolComposition",
-                        "printedName": "Any"
-                      }
-                    ],
-                    "hasDefaultArg": true,
-                    "usr": "s:Sq"
-                  }
-                ],
-                "declKind": "Constructor",
-                "usr": "s:7Amplify24StorageUploadFileRequestV7OptionsV8metadata6bucket11contentType06pluginF0AESDyS2SGSg_xSSSgypSgtcAA0B6BucketRzlufc",
-                "mangledName": "$s7Amplify24StorageUploadFileRequestV7OptionsV8metadata6bucket11contentType06pluginF0AESDyS2SGSg_xSSSgypSgtcAA0B6BucketRzlufc",
                 "moduleName": "Amplify",
                 "init_kind": "Designated"
               }
@@ -145338,446 +144627,6 @@
             ],
             "usr": "s:SY",
             "mangledName": "$sSY"
-          }
-        ]
-      },
-      {
-        "kind": "TypeDecl",
-        "name": "StorageBucket",
-        "printedName": "StorageBucket",
-        "children": [
-          {
-            "kind": "Function",
-            "name": "fromOutputs",
-            "printedName": "fromOutputs(name:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "GenericTypeParam",
-                "printedName": "Self"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "String",
-                "printedName": "Swift.String",
-                "usr": "s:SS"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "s:7Amplify13StorageBucketPA2A07OutputsbC0VRszrlE04fromD04nameAESS_tFZ",
-            "mangledName": "$s7Amplify13StorageBucketPA2A07OutputsbC0VRszrlE04fromD04nameAESS_tFZ",
-            "moduleName": "Amplify",
-            "genericSig": "<Self where Self == Amplify.OutputsStorageBucket>",
-            "static": true,
-            "isFromExtension": true,
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Function",
-            "name": "fromBucketInfo",
-            "printedName": "fromBucketInfo(_:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "GenericTypeParam",
-                "printedName": "Self"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "BucketInfo",
-                "printedName": "Amplify.BucketInfo",
-                "usr": "s:7Amplify10BucketInfoV"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "s:7Amplify13StorageBucketPA2A08ResolvedbC0VRszrlE04fromC4InfoyAeA0cF0VFZ",
-            "mangledName": "$s7Amplify13StorageBucketPA2A08ResolvedbC0VRszrlE04fromC4InfoyAeA0cF0VFZ",
-            "moduleName": "Amplify",
-            "genericSig": "<Self where Self == Amplify.ResolvedStorageBucket>",
-            "static": true,
-            "isFromExtension": true,
-            "funcSelfKind": "NonMutating"
-          }
-        ],
-        "declKind": "Protocol",
-        "usr": "s:7Amplify13StorageBucketP",
-        "mangledName": "$s7Amplify13StorageBucketP",
-        "moduleName": "Amplify"
-      },
-      {
-        "kind": "TypeDecl",
-        "name": "BucketInfo",
-        "printedName": "BucketInfo",
-        "children": [
-          {
-            "kind": "Var",
-            "name": "bucketName",
-            "printedName": "bucketName",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "String",
-                "printedName": "Swift.String",
-                "usr": "s:SS"
-              }
-            ],
-            "declKind": "Var",
-            "usr": "s:7Amplify10BucketInfoV10bucketNameSSvp",
-            "mangledName": "$s7Amplify10BucketInfoV10bucketNameSSvp",
-            "moduleName": "Amplify",
-            "declAttributes": [
-              "HasStorage"
-            ],
-            "isLet": true,
-            "hasStorage": true,
-            "accessors": [
-              {
-                "kind": "Accessor",
-                "name": "Get",
-                "printedName": "Get()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "String",
-                    "printedName": "Swift.String",
-                    "usr": "s:SS"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "s:7Amplify10BucketInfoV10bucketNameSSvg",
-                "mangledName": "$s7Amplify10BucketInfoV10bucketNameSSvg",
-                "moduleName": "Amplify",
-                "implicit": true,
-                "declAttributes": [
-                  "Transparent"
-                ],
-                "accessorKind": "get"
-              }
-            ]
-          },
-          {
-            "kind": "Var",
-            "name": "region",
-            "printedName": "region",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "String",
-                "printedName": "Swift.String",
-                "usr": "s:SS"
-              }
-            ],
-            "declKind": "Var",
-            "usr": "s:7Amplify10BucketInfoV6regionSSvp",
-            "mangledName": "$s7Amplify10BucketInfoV6regionSSvp",
-            "moduleName": "Amplify",
-            "declAttributes": [
-              "HasStorage"
-            ],
-            "isLet": true,
-            "hasStorage": true,
-            "accessors": [
-              {
-                "kind": "Accessor",
-                "name": "Get",
-                "printedName": "Get()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "String",
-                    "printedName": "Swift.String",
-                    "usr": "s:SS"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "s:7Amplify10BucketInfoV6regionSSvg",
-                "mangledName": "$s7Amplify10BucketInfoV6regionSSvg",
-                "moduleName": "Amplify",
-                "implicit": true,
-                "declAttributes": [
-                  "Transparent"
-                ],
-                "accessorKind": "get"
-              }
-            ]
-          },
-          {
-            "kind": "Constructor",
-            "name": "init",
-            "printedName": "init(bucketName:region:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "BucketInfo",
-                "printedName": "Amplify.BucketInfo",
-                "usr": "s:7Amplify10BucketInfoV"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "String",
-                "printedName": "Swift.String",
-                "usr": "s:SS"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "String",
-                "printedName": "Swift.String",
-                "usr": "s:SS"
-              }
-            ],
-            "declKind": "Constructor",
-            "usr": "s:7Amplify10BucketInfoV10bucketName6regionACSS_SStcfc",
-            "mangledName": "$s7Amplify10BucketInfoV10bucketName6regionACSS_SStcfc",
-            "moduleName": "Amplify",
-            "init_kind": "Designated"
-          },
-          {
-            "kind": "Function",
-            "name": "hash",
-            "printedName": "hash(into:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Hasher",
-                "printedName": "Swift.Hasher",
-                "paramValueOwnership": "InOut",
-                "usr": "s:s6HasherV"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "s:7Amplify10BucketInfoV4hash4intoys6HasherVz_tF",
-            "mangledName": "$s7Amplify10BucketInfoV4hash4intoys6HasherVz_tF",
-            "moduleName": "Amplify",
-            "implicit": true,
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Function",
-            "name": "__derived_struct_equals",
-            "printedName": "__derived_struct_equals(_:_:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Bool",
-                "printedName": "Swift.Bool",
-                "usr": "s:Sb"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "BucketInfo",
-                "printedName": "Amplify.BucketInfo",
-                "usr": "s:7Amplify10BucketInfoV"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "BucketInfo",
-                "printedName": "Amplify.BucketInfo",
-                "usr": "s:7Amplify10BucketInfoV"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "s:7Amplify10BucketInfoV23__derived_struct_equalsySbAC_ACtFZ",
-            "mangledName": "$s7Amplify10BucketInfoV23__derived_struct_equalsySbAC_ACtFZ",
-            "moduleName": "Amplify",
-            "static": true,
-            "implicit": true,
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Var",
-            "name": "hashValue",
-            "printedName": "hashValue",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Int",
-                "printedName": "Swift.Int",
-                "usr": "s:Si"
-              }
-            ],
-            "declKind": "Var",
-            "usr": "s:7Amplify10BucketInfoV9hashValueSivp",
-            "mangledName": "$s7Amplify10BucketInfoV9hashValueSivp",
-            "moduleName": "Amplify",
-            "implicit": true,
-            "accessors": [
-              {
-                "kind": "Accessor",
-                "name": "Get",
-                "printedName": "Get()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Int",
-                    "printedName": "Swift.Int",
-                    "usr": "s:Si"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "s:7Amplify10BucketInfoV9hashValueSivg",
-                "mangledName": "$s7Amplify10BucketInfoV9hashValueSivg",
-                "moduleName": "Amplify",
-                "implicit": true,
-                "accessorKind": "get"
-              }
-            ]
-          }
-        ],
-        "declKind": "Struct",
-        "usr": "s:7Amplify10BucketInfoV",
-        "mangledName": "$s7Amplify10BucketInfoV",
-        "moduleName": "Amplify",
-        "conformances": [
-          {
-            "kind": "Conformance",
-            "name": "Hashable",
-            "printedName": "Hashable",
-            "usr": "s:SH",
-            "mangledName": "$sSH"
-          },
-          {
-            "kind": "Conformance",
-            "name": "Equatable",
-            "printedName": "Equatable",
-            "usr": "s:SQ",
-            "mangledName": "$sSQ"
-          }
-        ]
-      },
-      {
-        "kind": "TypeDecl",
-        "name": "OutputsStorageBucket",
-        "printedName": "OutputsStorageBucket",
-        "children": [
-          {
-            "kind": "Var",
-            "name": "name",
-            "printedName": "name",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "String",
-                "printedName": "Swift.String",
-                "usr": "s:SS"
-              }
-            ],
-            "declKind": "Var",
-            "usr": "s:7Amplify20OutputsStorageBucketV4nameSSvp",
-            "mangledName": "$s7Amplify20OutputsStorageBucketV4nameSSvp",
-            "moduleName": "Amplify",
-            "declAttributes": [
-              "HasStorage"
-            ],
-            "isLet": true,
-            "hasStorage": true,
-            "accessors": [
-              {
-                "kind": "Accessor",
-                "name": "Get",
-                "printedName": "Get()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "String",
-                    "printedName": "Swift.String",
-                    "usr": "s:SS"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "s:7Amplify20OutputsStorageBucketV4nameSSvg",
-                "mangledName": "$s7Amplify20OutputsStorageBucketV4nameSSvg",
-                "moduleName": "Amplify",
-                "implicit": true,
-                "declAttributes": [
-                  "Transparent"
-                ],
-                "accessorKind": "get"
-              }
-            ]
-          }
-        ],
-        "declKind": "Struct",
-        "usr": "s:7Amplify20OutputsStorageBucketV",
-        "mangledName": "$s7Amplify20OutputsStorageBucketV",
-        "moduleName": "Amplify",
-        "conformances": [
-          {
-            "kind": "Conformance",
-            "name": "StorageBucket",
-            "printedName": "StorageBucket",
-            "usr": "s:7Amplify13StorageBucketP",
-            "mangledName": "$s7Amplify13StorageBucketP"
-          }
-        ]
-      },
-      {
-        "kind": "TypeDecl",
-        "name": "ResolvedStorageBucket",
-        "printedName": "ResolvedStorageBucket",
-        "children": [
-          {
-            "kind": "Var",
-            "name": "bucketInfo",
-            "printedName": "bucketInfo",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "BucketInfo",
-                "printedName": "Amplify.BucketInfo",
-                "usr": "s:7Amplify10BucketInfoV"
-              }
-            ],
-            "declKind": "Var",
-            "usr": "s:7Amplify21ResolvedStorageBucketV10bucketInfoAA0dF0Vvp",
-            "mangledName": "$s7Amplify21ResolvedStorageBucketV10bucketInfoAA0dF0Vvp",
-            "moduleName": "Amplify",
-            "declAttributes": [
-              "HasStorage"
-            ],
-            "isLet": true,
-            "hasStorage": true,
-            "accessors": [
-              {
-                "kind": "Accessor",
-                "name": "Get",
-                "printedName": "Get()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "BucketInfo",
-                    "printedName": "Amplify.BucketInfo",
-                    "usr": "s:7Amplify10BucketInfoV"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "s:7Amplify21ResolvedStorageBucketV10bucketInfoAA0dF0Vvg",
-                "mangledName": "$s7Amplify21ResolvedStorageBucketV10bucketInfoAA0dF0Vvg",
-                "moduleName": "Amplify",
-                "implicit": true,
-                "declAttributes": [
-                  "Transparent"
-                ],
-                "accessorKind": "get"
-              }
-            ]
-          }
-        ],
-        "declKind": "Struct",
-        "usr": "s:7Amplify21ResolvedStorageBucketV",
-        "mangledName": "$s7Amplify21ResolvedStorageBucketV",
-        "moduleName": "Amplify",
-        "conformances": [
-          {
-            "kind": "Conformance",
-            "name": "StorageBucket",
-            "printedName": "StorageBucket",
-            "usr": "s:7Amplify13StorageBucketP",
-            "mangledName": "$s7Amplify13StorageBucketP"
           }
         ]
       },
@@ -155210,350 +154059,6 @@
                 ]
               },
               {
-                "kind": "Var",
-                "name": "buckets",
-                "printedName": "buckets",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Optional",
-                    "printedName": "[Amplify.AmplifyOutputsData.Storage.Bucket]?",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Array",
-                        "printedName": "[Amplify.AmplifyOutputsData.Storage.Bucket]",
-                        "children": [
-                          {
-                            "kind": "TypeNominal",
-                            "name": "Bucket",
-                            "printedName": "Amplify.AmplifyOutputsData.Storage.Bucket",
-                            "usr": "s:7Amplify0A11OutputsDataV7StorageV6BucketV"
-                          }
-                        ],
-                        "usr": "s:Sa"
-                      }
-                    ],
-                    "usr": "s:Sq"
-                  }
-                ],
-                "declKind": "Var",
-                "usr": "s:7Amplify0A11OutputsDataV7StorageV7bucketsSayAE6BucketVGSgvp",
-                "mangledName": "$s7Amplify0A11OutputsDataV7StorageV7bucketsSayAE6BucketVGSgvp",
-                "moduleName": "Amplify",
-                "declAttributes": [
-                  "HasStorage"
-                ],
-                "spi_group_names": [
-                  "InternalAmplifyConfiguration"
-                ],
-                "isLet": true,
-                "hasStorage": true,
-                "accessors": [
-                  {
-                    "kind": "Accessor",
-                    "name": "Get",
-                    "printedName": "Get()",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Optional",
-                        "printedName": "[Amplify.AmplifyOutputsData.Storage.Bucket]?",
-                        "children": [
-                          {
-                            "kind": "TypeNominal",
-                            "name": "Array",
-                            "printedName": "[Amplify.AmplifyOutputsData.Storage.Bucket]",
-                            "children": [
-                              {
-                                "kind": "TypeNominal",
-                                "name": "Bucket",
-                                "printedName": "Amplify.AmplifyOutputsData.Storage.Bucket",
-                                "usr": "s:7Amplify0A11OutputsDataV7StorageV6BucketV"
-                              }
-                            ],
-                            "usr": "s:Sa"
-                          }
-                        ],
-                        "usr": "s:Sq"
-                      }
-                    ],
-                    "declKind": "Accessor",
-                    "usr": "s:7Amplify0A11OutputsDataV7StorageV7bucketsSayAE6BucketVGSgvg",
-                    "mangledName": "$s7Amplify0A11OutputsDataV7StorageV7bucketsSayAE6BucketVGSgvg",
-                    "moduleName": "Amplify",
-                    "implicit": true,
-                    "declAttributes": [
-                      "Transparent"
-                    ],
-                    "spi_group_names": [
-                      "InternalAmplifyConfiguration"
-                    ],
-                    "accessorKind": "get"
-                  }
-                ]
-              },
-              {
-                "kind": "TypeDecl",
-                "name": "Bucket",
-                "printedName": "Bucket",
-                "children": [
-                  {
-                    "kind": "Var",
-                    "name": "name",
-                    "printedName": "name",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "String",
-                        "printedName": "Swift.String",
-                        "usr": "s:SS"
-                      }
-                    ],
-                    "declKind": "Var",
-                    "usr": "s:7Amplify0A11OutputsDataV7StorageV6BucketV4nameSSvp",
-                    "mangledName": "$s7Amplify0A11OutputsDataV7StorageV6BucketV4nameSSvp",
-                    "moduleName": "Amplify",
-                    "declAttributes": [
-                      "HasStorage"
-                    ],
-                    "spi_group_names": [
-                      "InternalAmplifyConfiguration"
-                    ],
-                    "isLet": true,
-                    "hasStorage": true,
-                    "accessors": [
-                      {
-                        "kind": "Accessor",
-                        "name": "Get",
-                        "printedName": "Get()",
-                        "children": [
-                          {
-                            "kind": "TypeNominal",
-                            "name": "String",
-                            "printedName": "Swift.String",
-                            "usr": "s:SS"
-                          }
-                        ],
-                        "declKind": "Accessor",
-                        "usr": "s:7Amplify0A11OutputsDataV7StorageV6BucketV4nameSSvg",
-                        "mangledName": "$s7Amplify0A11OutputsDataV7StorageV6BucketV4nameSSvg",
-                        "moduleName": "Amplify",
-                        "implicit": true,
-                        "declAttributes": [
-                          "Transparent"
-                        ],
-                        "spi_group_names": [
-                          "InternalAmplifyConfiguration"
-                        ],
-                        "accessorKind": "get"
-                      }
-                    ]
-                  },
-                  {
-                    "kind": "Var",
-                    "name": "bucketName",
-                    "printedName": "bucketName",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "String",
-                        "printedName": "Swift.String",
-                        "usr": "s:SS"
-                      }
-                    ],
-                    "declKind": "Var",
-                    "usr": "s:7Amplify0A11OutputsDataV7StorageV6BucketV10bucketNameSSvp",
-                    "mangledName": "$s7Amplify0A11OutputsDataV7StorageV6BucketV10bucketNameSSvp",
-                    "moduleName": "Amplify",
-                    "declAttributes": [
-                      "HasStorage"
-                    ],
-                    "spi_group_names": [
-                      "InternalAmplifyConfiguration"
-                    ],
-                    "isLet": true,
-                    "hasStorage": true,
-                    "accessors": [
-                      {
-                        "kind": "Accessor",
-                        "name": "Get",
-                        "printedName": "Get()",
-                        "children": [
-                          {
-                            "kind": "TypeNominal",
-                            "name": "String",
-                            "printedName": "Swift.String",
-                            "usr": "s:SS"
-                          }
-                        ],
-                        "declKind": "Accessor",
-                        "usr": "s:7Amplify0A11OutputsDataV7StorageV6BucketV10bucketNameSSvg",
-                        "mangledName": "$s7Amplify0A11OutputsDataV7StorageV6BucketV10bucketNameSSvg",
-                        "moduleName": "Amplify",
-                        "implicit": true,
-                        "declAttributes": [
-                          "Transparent"
-                        ],
-                        "spi_group_names": [
-                          "InternalAmplifyConfiguration"
-                        ],
-                        "accessorKind": "get"
-                      }
-                    ]
-                  },
-                  {
-                    "kind": "Var",
-                    "name": "awsRegion",
-                    "printedName": "awsRegion",
-                    "children": [
-                      {
-                        "kind": "TypeNameAlias",
-                        "name": "AWSRegion",
-                        "printedName": "Amplify.AmplifyOutputsData.AWSRegion",
-                        "children": [
-                          {
-                            "kind": "TypeNominal",
-                            "name": "String",
-                            "printedName": "Swift.String",
-                            "usr": "s:SS"
-                          }
-                        ]
-                      }
-                    ],
-                    "declKind": "Var",
-                    "usr": "s:7Amplify0A11OutputsDataV7StorageV6BucketV9awsRegionSSvp",
-                    "mangledName": "$s7Amplify0A11OutputsDataV7StorageV6BucketV9awsRegionSSvp",
-                    "moduleName": "Amplify",
-                    "declAttributes": [
-                      "HasStorage"
-                    ],
-                    "spi_group_names": [
-                      "InternalAmplifyConfiguration"
-                    ],
-                    "isLet": true,
-                    "hasStorage": true,
-                    "accessors": [
-                      {
-                        "kind": "Accessor",
-                        "name": "Get",
-                        "printedName": "Get()",
-                        "children": [
-                          {
-                            "kind": "TypeNameAlias",
-                            "name": "AWSRegion",
-                            "printedName": "Amplify.AmplifyOutputsData.AWSRegion",
-                            "children": [
-                              {
-                                "kind": "TypeNominal",
-                                "name": "String",
-                                "printedName": "Swift.String",
-                                "usr": "s:SS"
-                              }
-                            ]
-                          }
-                        ],
-                        "declKind": "Accessor",
-                        "usr": "s:7Amplify0A11OutputsDataV7StorageV6BucketV9awsRegionSSvg",
-                        "mangledName": "$s7Amplify0A11OutputsDataV7StorageV6BucketV9awsRegionSSvg",
-                        "moduleName": "Amplify",
-                        "implicit": true,
-                        "declAttributes": [
-                          "Transparent"
-                        ],
-                        "spi_group_names": [
-                          "InternalAmplifyConfiguration"
-                        ],
-                        "accessorKind": "get"
-                      }
-                    ]
-                  },
-                  {
-                    "kind": "Function",
-                    "name": "encode",
-                    "printedName": "encode(to:)",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Void",
-                        "printedName": "()"
-                      },
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Encoder",
-                        "printedName": "any Swift.Encoder",
-                        "usr": "s:s7EncoderP"
-                      }
-                    ],
-                    "declKind": "Func",
-                    "usr": "s:7Amplify0A11OutputsDataV7StorageV6BucketV6encode2toys7Encoder_p_tKF",
-                    "mangledName": "$s7Amplify0A11OutputsDataV7StorageV6BucketV6encode2toys7Encoder_p_tKF",
-                    "moduleName": "Amplify",
-                    "implicit": true,
-                    "spi_group_names": [
-                      "InternalAmplifyConfiguration"
-                    ],
-                    "throwing": true,
-                    "funcSelfKind": "NonMutating"
-                  },
-                  {
-                    "kind": "Constructor",
-                    "name": "init",
-                    "printedName": "init(from:)",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Bucket",
-                        "printedName": "Amplify.AmplifyOutputsData.Storage.Bucket",
-                        "usr": "s:7Amplify0A11OutputsDataV7StorageV6BucketV"
-                      },
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Decoder",
-                        "printedName": "any Swift.Decoder",
-                        "usr": "s:s7DecoderP"
-                      }
-                    ],
-                    "declKind": "Constructor",
-                    "usr": "s:7Amplify0A11OutputsDataV7StorageV6BucketV4fromAGs7Decoder_p_tKcfc",
-                    "mangledName": "$s7Amplify0A11OutputsDataV7StorageV6BucketV4fromAGs7Decoder_p_tKcfc",
-                    "moduleName": "Amplify",
-                    "implicit": true,
-                    "spi_group_names": [
-                      "InternalAmplifyConfiguration"
-                    ],
-                    "throwing": true,
-                    "init_kind": "Designated"
-                  }
-                ],
-                "declKind": "Struct",
-                "usr": "s:7Amplify0A11OutputsDataV7StorageV6BucketV",
-                "mangledName": "$s7Amplify0A11OutputsDataV7StorageV6BucketV",
-                "moduleName": "Amplify",
-                "declAttributes": [
-                  "SPIAccessControl"
-                ],
-                "spi_group_names": [
-                  "InternalAmplifyConfiguration"
-                ],
-                "conformances": [
-                  {
-                    "kind": "Conformance",
-                    "name": "Decodable",
-                    "printedName": "Decodable",
-                    "usr": "s:Se",
-                    "mangledName": "$sSe"
-                  },
-                  {
-                    "kind": "Conformance",
-                    "name": "Encodable",
-                    "printedName": "Encodable",
-                    "usr": "s:SE",
-                    "mangledName": "$sSE"
-                  }
-                ]
-              },
-              {
                 "kind": "Function",
                 "name": "encode",
                 "printedName": "encode(to:)",
@@ -157701,80 +156206,6 @@
         "name": "AmplifyOutputs",
         "printedName": "AmplifyOutputs",
         "children": [
-          {
-            "kind": "Var",
-            "name": "resolveConfiguration",
-            "printedName": "resolveConfiguration",
-            "children": [
-              {
-                "kind": "TypeFunc",
-                "name": "Function",
-                "printedName": "() throws -> Amplify.AmplifyOutputsData",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "AmplifyOutputsData",
-                    "printedName": "Amplify.AmplifyOutputsData",
-                    "usr": "s:7Amplify0A11OutputsDataV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Void",
-                    "printedName": "()"
-                  }
-                ]
-              }
-            ],
-            "declKind": "Var",
-            "usr": "s:7Amplify0A7OutputsV20resolveConfigurationAA0aB4DataVyKcvp",
-            "mangledName": "$s7Amplify0A7OutputsV20resolveConfigurationAA0aB4DataVyKcvp",
-            "moduleName": "Amplify",
-            "declAttributes": [
-              "SPIAccessControl",
-              "HasStorage"
-            ],
-            "spi_group_names": [
-              "InternalAmplifyConfiguration"
-            ],
-            "isLet": true,
-            "hasStorage": true,
-            "accessors": [
-              {
-                "kind": "Accessor",
-                "name": "Get",
-                "printedName": "Get()",
-                "children": [
-                  {
-                    "kind": "TypeFunc",
-                    "name": "Function",
-                    "printedName": "() throws -> Amplify.AmplifyOutputsData",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "AmplifyOutputsData",
-                        "printedName": "Amplify.AmplifyOutputsData",
-                        "usr": "s:7Amplify0A11OutputsDataV"
-                      },
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Void",
-                        "printedName": "()"
-                      }
-                    ]
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "s:7Amplify0A7OutputsV20resolveConfigurationAA0aB4DataVyKcvg",
-                "mangledName": "$s7Amplify0A7OutputsV20resolveConfigurationAA0aB4DataVyKcvg",
-                "moduleName": "Amplify",
-                "implicit": true,
-                "declAttributes": [
-                  "Transparent"
-                ],
-                "accessorKind": "get"
-              }
-            ]
-          },
           {
             "kind": "Var",
             "name": "amplifyOutputs",
@@ -180497,7 +178928,7 @@
         ],
         "declKind": "Struct",
         "usr": "c:@S@CLLocationCoordinate2D",
-        "location": "\/Applications\/Xcode-15.4.0.app\/Contents\/Developer\/Platforms\/MacOSX.platform\/Developer\/SDKs\/MacOSX.sdk\/System\/Library\/Frameworks\/CoreLocation.framework\/Headers\/CLLocation.h:79:8",
+        "location": "\/Applications\/Xcode_15.4.app\/Contents\/Developer\/Platforms\/MacOSX.platform\/Developer\/SDKs\/MacOSX.sdk\/System\/Library\/Frameworks\/CoreLocation.framework\/Headers\/CLLocation.h:79:8",
         "moduleName": "CoreLocation",
         "isExternal": true
       },
@@ -181157,7 +179588,7 @@
         ],
         "declKind": "Class",
         "usr": "c:objc(cs)OS_dispatch_source",
-        "location": "\/Applications\/Xcode-15.4.0.app\/Contents\/Developer\/Platforms\/MacOSX.platform\/Developer\/SDKs\/MacOSX.sdk\/usr\/include\/dispatch\/source.h:58:1",
+        "location": "\/Applications\/Xcode_15.4.app\/Contents\/Developer\/Platforms\/MacOSX.platform\/Developer\/SDKs\/MacOSX.sdk\/usr\/include\/dispatch\/source.h:58:1",
         "moduleName": "Dispatch",
         "isOpen": true,
         "objc_name": "OS_dispatch_source",
@@ -181437,7 +179868,7 @@
         ],
         "declKind": "Protocol",
         "usr": "c:objc(pl)NSLocking",
-        "location": "\/Applications\/Xcode-15.4.0.app\/Contents\/Developer\/Platforms\/MacOSX.platform\/Developer\/SDKs\/MacOSX.sdk\/System\/Library\/Frameworks\/Foundation.framework\/Headers\/NSLock.h:11:11",
+        "location": "\/Applications\/Xcode_15.4.app\/Contents\/Developer\/Platforms\/MacOSX.platform\/Developer\/SDKs\/MacOSX.sdk\/System\/Library\/Frameworks\/Foundation.framework\/Headers\/NSLock.h:11:11",
         "moduleName": "Foundation",
         "genericSig": "<Self : AnyObject>",
         "objc_name": "NSLocking",
@@ -181513,12 +179944,12 @@
     "json_format_version": 8,
     "tool_arguments": [
       "-sdk",
-      "\/Applications\/Xcode-15.4.0.app\/Contents\/Developer\/Platforms\/MacOSX.platform\/Developer\/SDKs\/MacOSX.sdk",
+      "\/Applications\/Xcode_15.4.app\/Contents\/Developer\/Platforms\/MacOSX.platform\/Developer\/SDKs\/MacOSX.sdk",
       "-dump-sdk",
       "-module",
       "Amplify",
       "-o",
-      "\/var\/folders\/k7\/4hy4p20s2rv4clw77d3qcl380000gr\/T\/tmp.nF2YaRsn2M\/Amplify.json",
+      "\/var\/folders\/hw\/1f0gcr8d6kn9ms0_wn0_57qc0000gn\/T\/tmp.7FvtSuhXB9\/Amplify.json",
       "-I",
       ".build\/debug",
       "-sdk-version",

@@ -1,5 +1,59 @@
 # Changelog
 
+## 2.46.0 (2025-02-27)
+
+### Features
+
+- **auth**: adding support for keychain sharing using app groups (#3947)
+
+## 2.45.4 (2025-01-13)
+
+### Bug Fixes
+
+- **predictions**: use serial queue for WebSocketSession delegate queue (#3935)
+
+## 2.45.3 (2025-01-02)
+
+### Bug Fixes
+
+- **API**: Fixing issue with CN endpoints (#3941)
+
+## 2.45.2 (2024-12-11)
+
+### Bug Fixes
+
+- **auth**: fix credential decoding
+- Fixing the WebAuthn integration tests (#3933)
+
+## 2.45.1 (2024-12-09)
+
+### Bug Fixes
+
+- **auth**: add localized description to AWSCognitoAuthError (#3929)
+- **auth**: use auth flow type correctly from amplifyconfiguraiton.json (#3928)
+- **amplify-xode**: updated to support Xcode 16 (#3925)
+
+## 2.45.0 (2024-11-25)
+
+### Features
+
+- Adding visionOS support to the WebAuthn APIs (#171)
+- **auth**: adding an initial passwordless integration test with resources defined (#163)
+- **auth**: adding passwordless sign in preferred flows (#162)
+- **auth**: add support for passwordless sign up and auto sign in (#160)
+- **WebAuthn**: Adding support for retrying a confirmSignIn with WebAuthn request, if the first one fails (#158)
+- **Auth**: Adding WebAuthn support to signIn and confirmSignIn APIs (#155)
+- **auth**: add passwordless sign with otp (#151)
+- **Auth**: Adding WebAuthn APIs (#153)
+- **auth**: adding support for email mfa (#3892)
+
+### Bug Fixes
+
+- **auth**: fix resolvers and tasks for auto sign in when state machine is in signing in state (#172)
+- Fixing service errors being reported as .unknown when sign in fails (#170)
+- Fixing build errors in watchOS/tvOS due to missing prechecks.
+- Fixing build issue when iOS 18/macOS 15 are not installed
+
 ## 2.44.0 (2024-10-31)
 
 ### Features
