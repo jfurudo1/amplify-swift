@@ -1,5 +1,40 @@
 # Changelog
 
+## 2.48.1 (2025-06-12)
+
+### Bug Fixes
+
+- **api**: fix subscription failures (#3998)
+- **storage**: avoid using self in failure messages (#3994)
+
+## 2.48.0 (2025-05-12)
+
+### Features
+
+- **auth**: ignore user cancel when session is expired on hostedui sign out (#3956)
+
+### Bug Fixes
+
+- **logging**: crash in release builds (#3971)
+
+## 2.47.0 (2025-04-24)
+
+### Features
+
+- bumping the sdk version to 1.2.59 (#3979)
+
+## 2.46.2 (2025-04-09)
+
+### Bug Fixes
+
+- **storage**: clean up cached files upon completion (#3967)
+
+## 2.46.1 (2025-03-18)
+
+### Bug Fixes
+
+- **predictions**: use UTC timezone in date formatter (#3965)
+
 ## 2.46.0 (2025-02-27)
 
 ### Features
