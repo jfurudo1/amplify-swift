@@ -11,6 +11,11 @@ import Foundation
 @preconcurrency import AuthenticationServices
 #endif
 
+struct HostedUISessionHolder {
+    static weak var aswebAuthenticationSession: ASWebAuthenticationSession?
+    static var continuation: CheckedContinuation<[URLQueryItem], Error>?
+}
+
 class HostedUIASWebAuthenticationSession: NSObject, HostedUISessionBehavior {
 
     weak var webPresentation: AuthUIPresentationAnchor?
@@ -61,6 +66,8 @@ class HostedUIASWebAuthenticationSession: NSObject, HostedUISessionBehavior {
             )
             aswebAuthenticationSession.presentationContextProvider = self
             aswebAuthenticationSession.prefersEphemeralWebBrowserSession = inPrivate
+            HostedUISessionHolder.aswebAuthenticationSession = aswebAuthenticationSession
+            HostedUISessionHolder.continuation = continuation
 
             DispatchQueue.main.async {
                 var canStart = true

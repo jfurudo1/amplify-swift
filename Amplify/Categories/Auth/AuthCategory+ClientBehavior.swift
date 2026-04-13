@@ -59,6 +59,10 @@ extension AuthCategory: AuthCategoryBehavior {
             options: options
         )
     }
+
+    public func continueFromDeepLink(queryItems: [URLQueryItem]) {
+        plugin.continueFromDeepLink(queryItems: queryItems)
+    }
 #endif
 
     public func confirmSignIn(
