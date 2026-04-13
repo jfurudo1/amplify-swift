@@ -31,8 +31,7 @@ extension AWSCognitoAuthPlugin {
         return { request in
             try await signAppSyncRequest(
                 request,
-
-                                         region: region
+                region: region
             )
         }
     }
@@ -112,9 +111,7 @@ extension AWSCognitoAuthPlugin {
             return nil
         }
 
-        var headers = urlRequest.allHTTPHeaderFields ?? [:]
-        headers.updateValue(host, forKey: "host")
-
+        let headers = urlRequest.allHTTPHeaderFields ?? [:]
         let httpMethod = (urlRequest.httpMethod?.uppercased())
             .flatMap(HTTPMethodType.init(rawValue:)) ?? .get
 
